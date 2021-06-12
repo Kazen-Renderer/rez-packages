@@ -4,28 +4,25 @@ include(RezBuild)
 include(RezRepository)
 include(ExternalProject)
 
-
 set(version $ENV{REZ_BUILD_PROJECT_VERSION})
 set(name $ENV{REZ_BUILD_PROJECT_NAME})
-set(url https://github.com/AcademySoftwareFoundation/openexr/archive/refs/tags/v2.4.3.tar.gz)
-set(make_args -j$ENV{REZ_BUILD_THREAD_COUNT} VERBOSE=1)
+set(url https://github.com/OpenImageIO/oiio/archive/refs/tags/v2.2.15.1.tar.gz)
+set(make_args VERBOSE=1)
 
-
-if(${REZ_BUILD_INSTALL})
+if($ENV{REZ_BUILD_INSTALL})
     set(install_cmd make install ${make_args})
 else()
     set(install_cmd echo "skip install step")
 endif()
 
-
 ExternalProject_add(
     ${name}
     URL ${url}
     PREFIX ${name}
-    CONFIGURE_COMMAND cmake -DILMBASE_BUILD_BOTH_STATIC_SHARED=ON 
-        -DOPENEXR_BUILD_BOTH_STATIC_SHARED=ON 
-        -DOPENEXR_VIEWERS_ENABLE=OFF
+    CONFIGURE_COMMAND cmake
         -DCMAKE_INSTALL_PREFIX=$ENV{REZ_BUILD_INSTALL_PATH}
+        -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+        -DOPENEXR_ROOT=$ENV{REZ_OPENEXR_ROOT}
         ../${name}
     BUILD_COMMAND make ${make_args}
     INSTALL_COMMAND ${install_cmd}
@@ -33,7 +30,7 @@ ExternalProject_add(
 
 install(CODE "message(STATUS Dummy Install Target)")
 
-rez_install_files(
-    cmake/openexr.cmake
-    DESTINATION .
+#rez_install_files(
+    #cmake/oiio.cmake
+    #DESTINATION .
 )

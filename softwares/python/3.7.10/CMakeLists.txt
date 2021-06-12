@@ -21,9 +21,8 @@ ExternalProject_add(
     ${name}
     URL ${url}
     PREFIX ${name}
-    CONFIGURE_COMMAND cd ../${name} && ./configure --with-pydebug 
+    CONFIGURE_COMMAND cd ../${name} && ./configure 
         --prefix=$ENV{REZ_BUILD_INSTALL_PATH}
-        --enable-optimizations
         --with-lto
         --with-openssl=$ENV{REZ_OPENSSL_ROOT}
     BUILD_COMMAND cd ../${name} &&  make ${make_args}
