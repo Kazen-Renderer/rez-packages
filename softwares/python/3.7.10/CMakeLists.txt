@@ -25,8 +25,8 @@ ExternalProject_add(
         --prefix=$ENV{REZ_BUILD_INSTALL_PATH}
         --with-lto
         --with-openssl=$ENV{REZ_OPENSSL_ROOT}
+        --without-pymalloc
     BUILD_COMMAND cd ../${name} &&  make ${make_args}
-    #INSTALL_COMMAND ${install_cmd}
     INSTALL_COMMAND ${install_cmd}
 )
 
