@@ -29,7 +29,7 @@ ExternalProject_add(
 
 install(CODE "message(STATUS Dummy Install Target)")
 
-#rez_install_files(
-    #cmake/zlib.cmake
-    #DESTINATION .
-#)
+rez_install_files(
+    cmake/FindZLIB.cmake
+    DESTINATION .
+)

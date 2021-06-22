@@ -1,27 +1,27 @@
 import platform
 
-name = "python"
+name = "cmake"
 
-version = "3.7.10"
+version = "3.20.4"
 
 authors = [
-    "Guido van Rossum"
+    "Andy Cedilnik",
+    "Bill Hoffman",
+    "Brad King",
+    "Ken Martin",
+    "Alexander Neundorf"
 ]
 
 description = \
     """
-    Python is an interpreted high-level general-purpose programming 
-    language.
+    CMake is cross-platform free and open-source software for build
+    automation, testing, packaging and installation of software by using
+    a compiler-independent method.
     """
 
-build_requires = [
+build_requires = []
 
-]
-
-requires = [
-    "zlib-1.2.11",
-    "openssl-1.1.1"
-]
+requires = []
 
 variants = []
 
@@ -30,11 +30,10 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-uuid = "softwares.python"
+uuid = "softwares.cmake"
 
 
 def commands():
-    env.CMAKE_MODULE_PATH.append("{root}/cmake")
     env.PATH.append("{root}/bin")
 
     if building:

@@ -1,3 +1,5 @@
+import platform
+
 name = "openssl"
 
 version = "1.1.1"
@@ -27,9 +29,12 @@ requires = [
 
 ]
 
-variants = [
-    ["platform-osx", "arch-x86_64"]
-]
+variants = []
+
+if platform.system() == "Darwin":
+    variants.append(["platform-osx", "arch-x86-64"])
+elif platform.system() == "Linux":
+    variants.append(["platform-linux", "arch-x86_64"])
 
 uuid = "libs.openssl"
 

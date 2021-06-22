@@ -23,14 +23,10 @@ ExternalProject_add(
         -DCMAKE_INSTALL_PREFIX=$ENV{REZ_BUILD_INSTALL_PATH}
         -DCMAKE_POSITION_INDEPENDENT_CODE=ON
         -DOPENEXR_ROOT=$ENV{REZ_OPENEXR_ROOT}
+        -DBOOST_ROOT=$ENV{REZ_BOOST_ROOT}
         ../${name}
     BUILD_COMMAND make ${make_args}
     INSTALL_COMMAND ${install_cmd}
 )
 
 install(CODE "message(STATUS Dummy Install Target)")
-
-#rez_install_files(
-    #cmake/oiio.cmake
-    #DESTINATION .
-)

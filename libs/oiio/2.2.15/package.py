@@ -1,3 +1,5 @@
+import platform
+
 name = "oiio"
 
 version = "2.2.15"
@@ -17,12 +19,16 @@ build_requires = [
 ]
 
 requires = [
-
+    "openexr-2.4.3",
+    "boost-1.73",
 ]
 
-variants = [
-    ["platform-osx", "arch-x86_64"]
-]
+variants = []
+
+if platform.system() == "Darwin":
+    variants.append(["platform-osx", "arch-x86-64"])
+elif platform.system() == "Linux":
+    variants.append(["platform-linux", "arch-x86_64"])
 
 uuid = "libs.oiio"
 

@@ -1,28 +1,27 @@
+
 import platform
 
-name = "zlib"
+name = "python"
 
-version = "1.2.11"
+version = "2.7.18"
 
 authors = [
-    "Jean-loup Gailly",
-    "Mark Adler"
+    "Guido van Rossum"
 ]
 
 description = \
     """
-    zlib is designed to be a free, general-purpose, legally 
-    unencumbered -- that is, not covered by any patents -- lossless 
-    data-compression library for use on virtually any computer 
-    hardware and operating system. 
+    Python is an interpreted high-level general-purpose programming 
+    language.
     """
 
 build_requires = [
-    "cmake"
+
 ]
 
 requires = [
-
+    "zlib-1.2.11",
+    "openssl-1.1.1"
 ]
 
 variants = []
@@ -32,8 +31,7 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-
-uuid = "libs.zlib"
+uuid = "softwares.python"
 
 
 def commands():
