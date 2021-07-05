@@ -21,7 +21,9 @@ description = \
 
 build_requires = []
 
-requires = []
+requires = [
+    "openssl-1.1.1"
+]
 
 variants = []
 
@@ -35,6 +37,9 @@ uuid = "softwares.cmake"
 
 def commands():
     env.PATH.append("{root}/bin")
+    env.C_INCLUDE_PATH.append("{root}/include")
+    env.CPLUS_INCLUDE_PATH.append("{root}/include")
+    env.LIBRARY_PATH.append("{root}/lib")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")
