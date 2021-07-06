@@ -7,7 +7,7 @@ include(ExternalProject)
 
 set(version $ENV{REZ_BUILD_PROJECT_VERSION})
 set(name $ENV{REZ_BUILD_PROJECT_NAME})
-set(url https://github.com/jbeder/yaml-cpp/archive/refs/tags/yaml-cpp-0.6.3.tar.gz)
+set(url https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/refs/tags/v2.0.1.tar.gz)
 set(make_args -j$ENV{REZ_BUILD_THREAD_COUNT} VERBOSE=1)
 
 
@@ -23,7 +23,16 @@ ExternalProject_add(
     PREFIX ${name}
     CONFIGURE_COMMAND cmake
         -DCMAKE_INSTALL_PREFIX=$ENV{REZ_BUILD_INSTALL_PATH}
-        -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+        -DPython_EXECUTABLE=$ENV{REZ_PYTHON_ROOT}/bin/python
+        -Dpybind11_ROOT=$ENV{REZ_PYBIND11_ROOT}
+        -Dexpat_ROOT=$ENV{REZ_EXPAT_ROOT}
+        -Dyaml-cpp_ROOT=$ENV{REZ_YAMLCPP_ROOT}
+        -Dpystring_ROOT=$ENV{REZ_PYSTRING_ROOT}
+        -DHalf_ROOT=$ENV{REZ_OPENEXR_ROOT}
+        -DPYBIND11_TEST=OFF
+        -DOCIO_BUILD_APPS=OFF
+        -DOCIO_BUILD_TESTS=OFF
+        -DOCIO_BUILD_GPU_TESTS=OFF
         ../${name}
     BUILD_COMMAND make ${make_args}
     INSTALL_COMMAND ${install_cmd}
