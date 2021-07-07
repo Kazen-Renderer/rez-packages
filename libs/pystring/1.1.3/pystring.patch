@@ -1,0 +1,21 @@
+diff -Naur pystring-1.1.3/CMakeLists.txt pystring-1.1.3_copy/CMakeLists.txt
+--- pystring-1.1.3/CMakeLists.txt	1970-01-01 08:00:00.000000000 +0800
++++ pystring-1.1.3_copy/CMakeLists.txt	2021-07-04 21:22:31.926017166 +0800
+@@ -0,0 +1,17 @@
++cmake_minimum_required(VERSION 3.10)
++
++project(pystring LANGUAGES CXX C)
++
++set(CMAKE_CXX_STANDARD 17)
++
++add_library(pystring STATIC pystring.cpp)
++
++add_library(pystring_shared SHARED pystring.cpp)
++set_target_properties(pystring_shared PROPERTIES OUTPUT_NAME pystring)
++
++install(TARGETS pystring pystring_shared
++    ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
++    LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
++
++install(FILES pystring.h
++    DESTINATION ${CMAKE_INSTALL_PREFIX}/include)

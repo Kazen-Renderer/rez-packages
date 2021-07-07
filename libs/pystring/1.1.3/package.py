@@ -1,29 +1,24 @@
 import platform
 
-name = "zlib"
+name = "pystring"
 
-version = "1.2.11"
+version = "1.1.3"
 
 authors = [
-    "Jean-loup Gailly",
-    "Mark Adler"
+    "Jesse Beder"
 ]
 
 description = \
     """
-    zlib is designed to be a free, general-purpose, legally 
-    unencumbered -- that is, not covered by any patents -- lossless 
-    data-compression library for use on virtually any computer 
-    hardware and operating system. 
+    Pystring is a collection of C++ functions which match the interface
+    and behavior of python's string class methods using std::string.
     """
 
 build_requires = [
     "cmake"
 ]
 
-requires = [
-
-]
+requires = []
 
 variants = []
 
@@ -32,8 +27,7 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-
-uuid = "libs.zlib"
+uuid = "libs.pystring"
 
 
 def commands():

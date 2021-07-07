@@ -7,13 +7,12 @@ include(ExternalProject)
 
 set(version $ENV{REZ_BUILD_PROJECT_VERSION})
 set(name $ENV{REZ_BUILD_PROJECT_NAME})
-set(url https://www.python.org/ftp/python/3.7.10/Python-3.7.10.tar.xz)
+set(url https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tar.xz)
 set(make_args -j$ENV{REZ_BUILD_THREAD_COUNT} VERBOSE=1)
 
 
 if(${REZ_BUILD_INSTALL})
-    set(install_cmd cd ../${name} && make install ${make_args} &&
-        cd $ENV{REZ_BUILD_INSTALL_PATH}/bin && ln -s python3 python)
+    set(install_cmd cd ../${name} && make install ${make_args})
 else()
     set(install_cmd echo "skip install step")
 endif()

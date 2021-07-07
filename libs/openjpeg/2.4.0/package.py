@@ -1,20 +1,20 @@
 import platform
 
-name = "zlib"
+name = "openjpeg"
 
-version = "1.2.11"
+version = "2.4.0"
 
 authors = [
-    "Jean-loup Gailly",
-    "Mark Adler"
+    "Hervé Drolon",
+    "François-Olivier Devaux",
+    "Antonin Descampe",
+    "Yannick Verschueren",
+    "David Janssens, Benoît Macq"
 ]
 
 description = \
     """
-    zlib is designed to be a free, general-purpose, legally 
-    unencumbered -- that is, not covered by any patents -- lossless 
-    data-compression library for use on virtually any computer 
-    hardware and operating system. 
+    OpenJPEG is an open-source library to encode and decode JPEG 2000 images.
     """
 
 build_requires = [
@@ -32,12 +32,9 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-
-uuid = "libs.zlib"
+uuid = "libs.openjpeg"
 
 
 def commands():
-    env.CMAKE_MODULE_PATH.append("{root}/cmake")
-
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

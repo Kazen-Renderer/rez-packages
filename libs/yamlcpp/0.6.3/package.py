@@ -1,20 +1,16 @@
 import platform
 
-name = "zlib"
+name = "yamlcpp"
 
-version = "1.2.11"
+version = "0.6.3"
 
 authors = [
-    "Jean-loup Gailly",
-    "Mark Adler"
+    "Jesse Beder"
 ]
 
 description = \
     """
-    zlib is designed to be a free, general-purpose, legally 
-    unencumbered -- that is, not covered by any patents -- lossless 
-    data-compression library for use on virtually any computer 
-    hardware and operating system. 
+    yaml-cpp is a YAML parser and emitter in C++ matching the YAML 1.2 spec.
     """
 
 build_requires = [
@@ -22,7 +18,9 @@ build_requires = [
 ]
 
 requires = [
-
+    "python-3.7.10",
+    "boost-1.73",
+    "zlib-1.2.11"
 ]
 
 variants = []
@@ -32,8 +30,7 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-
-uuid = "libs.zlib"
+uuid = "libs.yamlcpp"
 
 
 def commands():

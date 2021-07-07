@@ -1,20 +1,18 @@
 import platform
 
-name = "zlib"
+name = "pybind11"
 
-version = "1.2.11"
+version = "2.6.2"
 
 authors = [
-    "Jean-loup Gailly",
-    "Mark Adler"
+    "Wenzel Jacob"
 ]
 
 description = \
     """
-    zlib is designed to be a free, general-purpose, legally 
-    unencumbered -- that is, not covered by any patents -- lossless 
-    data-compression library for use on virtually any computer 
-    hardware and operating system. 
+    pybind11 is a lightweight header-only library that exposes C++ types
+    in Python and vice versa, mainly to create Python bindings of existing
+    C++ code.
     """
 
 build_requires = [
@@ -22,7 +20,9 @@ build_requires = [
 ]
 
 requires = [
-
+    "python-3.7.10",
+    "boost-1.73",
+    "zlib-1.2.11"
 ]
 
 variants = []
@@ -32,8 +32,7 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-
-uuid = "libs.zlib"
+uuid = "libs.pybind11"
 
 
 def commands():

@@ -1,20 +1,17 @@
 import platform
 
-name = "zlib"
+name = "oiio"
 
-version = "1.2.11"
+version = "2.2.15"
 
 authors = [
-    "Jean-loup Gailly",
-    "Mark Adler"
+    "Larry Gritz"
 ]
 
 description = \
     """
-    zlib is designed to be a free, general-purpose, legally 
-    unencumbered -- that is, not covered by any patents -- lossless 
-    data-compression library for use on virtually any computer 
-    hardware and operating system. 
+    OpenImageIO is a library for reading and writing images, and 
+    a bunch of related classes, utilities, and applications.
     """
 
 build_requires = [
@@ -22,7 +19,16 @@ build_requires = [
 ]
 
 requires = [
-
+    "boost-1.73",
+    "python-3.7.10",
+    "tbb-2020.2",
+    "openexr-2.4.3",
+    "ocio-2.0.1",
+    "openjpeg-2.4.0",
+    "jpeg-2.1.0",
+    "tiff-4.3.0",
+    "png-1.6.37",
+    "zlib-1.2.11",
 ]
 
 variants = []
@@ -32,8 +38,7 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-
-uuid = "libs.zlib"
+uuid = "libs.oiio"
 
 
 def commands():

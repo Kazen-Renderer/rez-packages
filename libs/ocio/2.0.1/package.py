@@ -1,20 +1,17 @@
 import platform
 
-name = "zlib"
+name = "ocio"
 
-version = "1.2.11"
+version = "2.0.1"
 
 authors = [
-    "Jean-loup Gailly",
-    "Mark Adler"
+    "Sony Pictures Imageworks team"
 ]
 
 description = \
     """
-    zlib is designed to be a free, general-purpose, legally 
-    unencumbered -- that is, not covered by any patents -- lossless 
-    data-compression library for use on virtually any computer 
-    hardware and operating system. 
+    A complete color management solution geared towards motion picture
+    production with an emphasis on visual effects and computer animation.
     """
 
 build_requires = [
@@ -22,7 +19,12 @@ build_requires = [
 ]
 
 requires = [
-
+    "openexr-2.4.3",
+    "expat-2.2.8",
+    "yamlcpp-0.6.3",
+    "pystring-1.1.3",
+    "pybind11-2.6.2",
+    "python-3.7.10",
 ]
 
 variants = []
@@ -32,8 +34,7 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-
-uuid = "libs.zlib"
+uuid = "libs.ocio"
 
 
 def commands():

@@ -1,28 +1,27 @@
 import platform
 
-name = "zlib"
+name = "boost"
 
-version = "1.2.11"
+version = "1.73.0"
 
 authors = [
-    "Jean-loup Gailly",
-    "Mark Adler"
+    "Boost community"
 ]
 
 description = \
     """
-    zlib is designed to be a free, general-purpose, legally 
-    unencumbered -- that is, not covered by any patents -- lossless 
-    data-compression library for use on virtually any computer 
-    hardware and operating system. 
+    Boost is a set of libraries for the C++ programming language 
+    that provides support for tasks and structures such as linear 
+    algebra, pseudorandom number generation, multithreading,
+    image processing, regular expressions, and unit testing.
     """
 
 build_requires = [
-    "cmake"
+
 ]
 
 requires = [
-
+    "python-3.7.10"
 ]
 
 variants = []
@@ -32,8 +31,7 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-
-uuid = "libs.zlib"
+uuid = "libs.boost"
 
 
 def commands():

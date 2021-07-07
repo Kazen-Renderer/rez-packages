@@ -12,11 +12,10 @@ set(make_args -j$ENV{REZ_BUILD_THREAD_COUNT} VERBOSE=1)
 
 
 if(${REZ_BUILD_INSTALL})
-    set(install_cmd "cd ${name} && make install ${make_args}")
+    set(install_cmd make install ${make_args})
 else()
-    set(install_cmd "")
+    set(install_cmd echo "skip install step")
 endif()
-
 
 ExternalProject_add(
     ${name}
@@ -26,12 +25,15 @@ ExternalProject_add(
         -DOPENEXR_BUILD_BOTH_STATIC_SHARED=ON 
         -DOPENEXR_VIEWERS_ENABLE=OFF
         -DCMAKE_INSTALL_PREFIX=$ENV{REZ_BUILD_INSTALL_PATH}
+        -DBOOST_ROOT=$ENV{REZ_BOOST_ROOT}
+        -DBoost_NO_SYSTEM_PATHS=ON
+        -DZLIB_ROOT=$ENV{REZ_ZLIB_ROOT}
+        # From https://github.com/AcademySoftwareFoundation/openexr/issues/684
+        -DPython_EXECUTABLE=$ENV{REZ_PYTHON_ROOT}/bin/python
+        -DPython3_EXECUTABLE=$ENV{REZ_PYTHON_ROOT}/bin/python
         ../${name}
-    BUILD_COMMAND cd ${name} &&  make ${make_args}
-    INSTALL_COMMAND cd ${install_cmd}
+    BUILD_COMMAND make ${make_args}
+    INSTALL_COMMAND ${install_cmd}
 )
 
-rez_install_files(
-    cmake/openexr.cmake
-    DESTINATION .
-)
+install(CODE "message(STATUS Dummy Install Target)")

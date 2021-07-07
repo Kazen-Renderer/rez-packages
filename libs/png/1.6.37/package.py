@@ -1,20 +1,20 @@
 import platform
 
-name = "zlib"
+name = "png"
 
-version = "1.2.11"
+version = "1.6.37"
 
 authors = [
-    "Jean-loup Gailly",
-    "Mark Adler"
+    "Guy Eric Schalnat",
+    "Andreas Dilger",
+    "John Bowler",
+    "Glenn Randers-Pehrson",
+    "Cosmin Truta"
 ]
 
 description = \
     """
-    zlib is designed to be a free, general-purpose, legally 
-    unencumbered -- that is, not covered by any patents -- lossless 
-    data-compression library for use on virtually any computer 
-    hardware and operating system. 
+    libpng is the official PNG reference library.
     """
 
 build_requires = [
@@ -32,12 +32,9 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-
-uuid = "libs.zlib"
+uuid = "libs.png"
 
 
 def commands():
-    env.CMAKE_MODULE_PATH.append("{root}/cmake")
-
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

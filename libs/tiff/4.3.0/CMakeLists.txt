@@ -4,12 +4,14 @@ include(RezBuild)
 include(RezRepository)
 include(ExternalProject)
 
+
 set(version $ENV{REZ_BUILD_PROJECT_VERSION})
 set(name $ENV{REZ_BUILD_PROJECT_NAME})
-set(url https://zlib.net/zlib-1.2.11.tar.gz)
-set(make_args VERBOSE=1)
+set(url http://download.osgeo.org/libtiff/tiff-4.3.0.tar.gz)
+set(make_args -j$ENV{REZ_BUILD_THREAD_COUNT} VERBOSE=1)
 
-if($ENV{REZ_BUILD_INSTALL})
+
+if(${REZ_BUILD_INSTALL})
     set(install_cmd make install ${make_args})
 else()
     set(install_cmd echo "skip install step")
@@ -21,7 +23,9 @@ ExternalProject_add(
     PREFIX ${name}
     CONFIGURE_COMMAND cmake
         -DCMAKE_INSTALL_PREFIX=$ENV{REZ_BUILD_INSTALL_PATH}
-        -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+        -DCMAKE_POLICY_DEFAULT_CMP0074=NEW
+        -DZLIB_ROOT=$ENV{REZ_ZLIB_ROOT}
+        -DJPEG_ROOT=$ENV{REZ_JPEG_ROOT}
         ../${name}
     BUILD_COMMAND make ${make_args}
     INSTALL_COMMAND ${install_cmd}

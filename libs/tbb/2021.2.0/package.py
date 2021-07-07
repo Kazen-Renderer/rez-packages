@@ -1,29 +1,26 @@
 import platform
 
-name = "openexr"
+name = "tbb"
 
-version = "2.4.3"
+version = "2021.2.0"
 
 authors = [
-    "ILM"
+    "James Reinders",
+    "Rafael Asenjo",
+    "Michael J. Voss"
 ]
 
 description = \
     """
-    OpenEXR provides the specification and reference implementation of
-    the EXR file format, the professional-grade image storage format of
-    the motion picture industry.
+    Intel® Threading Building Blocks (Intel® TBB) is a library that
+    supports scalable parallel programming using standard ISO C++ code.
     """
 
 build_requires = [
     "cmake"
 ]
 
-requires = [
-    "python-3.7.10",
-    "boost-1.73",
-    "zlib-1.2.11"
-]
+requires = []
 
 variants = []
 
@@ -32,11 +29,9 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-uuid = "libs.openexr"
+uuid = "libs.tbb"
 
 
 def commands():
-    env.CMAKE_MODULE_PATH.append("{root}/cmake")
-
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

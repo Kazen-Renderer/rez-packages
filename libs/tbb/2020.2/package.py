@@ -1,27 +1,26 @@
 import platform
 
-name = "python"
+name = "tbb"
 
-version = "3.7.10"
+version = "2020.2"
 
 authors = [
-    "Guido van Rossum"
+    "James Reinders",
+    "Rafael Asenjo",
+    "Michael J. Voss"
 ]
 
 description = \
     """
-    Python is an interpreted high-level general-purpose programming 
-    language.
+    Intel® Threading Building Blocks (Intel® TBB) is a library that
+    supports scalable parallel programming using standard ISO C++ code.
     """
 
 build_requires = [
-
+    "python-3.7.10"
 ]
 
-requires = [
-    "zlib-1.2.11",
-    "openssl-1.1.1"
-]
+requires = []
 
 variants = []
 
@@ -30,12 +29,9 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-uuid = "softwares.python"
+uuid = "libs.tbb"
 
 
 def commands():
-    env.CMAKE_MODULE_PATH.append("{root}/cmake")
-    env.PATH.append("{root}/bin")
-
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

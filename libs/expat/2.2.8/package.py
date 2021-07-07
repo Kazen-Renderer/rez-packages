@@ -1,20 +1,16 @@
 import platform
 
-name = "zlib"
+name = "expat"
 
-version = "1.2.11"
+version = "2.2.8"
 
 authors = [
-    "Jean-loup Gailly",
-    "Mark Adler"
+    "James Clark"
 ]
 
 description = \
     """
-    zlib is designed to be a free, general-purpose, legally 
-    unencumbered -- that is, not covered by any patents -- lossless 
-    data-compression library for use on virtually any computer 
-    hardware and operating system. 
+    Expat is a stream-oriented XML parser.
     """
 
 build_requires = [
@@ -22,7 +18,9 @@ build_requires = [
 ]
 
 requires = [
-
+    "python-3.7.10",
+    "boost-1.73",
+    "zlib-1.2.11"
 ]
 
 variants = []
@@ -32,8 +30,7 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-
-uuid = "libs.zlib"
+uuid = "libs.expat"
 
 
 def commands():

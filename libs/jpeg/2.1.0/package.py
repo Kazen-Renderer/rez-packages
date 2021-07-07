@@ -1,29 +1,25 @@
 import platform
 
-name = "openexr"
+name = "jpeg"
 
-version = "2.4.3"
+version = "2.1.0"
 
 authors = [
-    "ILM"
+    "libjpeg-turbo team",
 ]
 
 description = \
     """
-    OpenEXR provides the specification and reference implementation of
-    the EXR file format, the professional-grade image storage format of
-    the motion picture industry.
+    libjpeg-turbo is a JPEG image codec that uses SIMD instructions
+    (MMX, SSE2, AVX2, Neon, AltiVec) to accelerate baseline JPEG
+    compression and decompression.
     """
 
 build_requires = [
     "cmake"
 ]
 
-requires = [
-    "python-3.7.10",
-    "boost-1.73",
-    "zlib-1.2.11"
-]
+requires = []
 
 variants = []
 
@@ -32,11 +28,9 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-uuid = "libs.openexr"
+uuid = "libs.jpeg"
 
 
 def commands():
-    env.CMAKE_MODULE_PATH.append("{root}/cmake")
-
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

@@ -1,20 +1,18 @@
 import platform
 
-name = "zlib"
+name = "tiff"
 
-version = "1.2.11"
+version = "4.3.0"
 
 authors = [
-    "Jean-loup Gailly",
-    "Mark Adler"
+    "Sam Leffler",
+    "Silicon Graphics"
 ]
 
 description = \
     """
-    zlib is designed to be a free, general-purpose, legally 
-    unencumbered -- that is, not covered by any patents -- lossless 
-    data-compression library for use on virtually any computer 
-    hardware and operating system. 
+    This software provides support for the Tag Image File Format (TIFF),
+    a widely used format for storing image data.
     """
 
 build_requires = [
@@ -22,7 +20,8 @@ build_requires = [
 ]
 
 requires = [
-
+    "jpeg-2.1.0",
+    "zlib-1.2.11"
 ]
 
 variants = []
@@ -32,12 +31,9 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-
-uuid = "libs.zlib"
+uuid = "libs.tiff"
 
 
 def commands():
-    env.CMAKE_MODULE_PATH.append("{root}/cmake")
-
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")
