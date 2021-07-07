@@ -21,13 +21,9 @@ description = \
     websites.
     """
 
-build_requires = [
-    "cmake"
-]
+build_requires = []
 
-requires = [
-
-]
+requires = []
 
 variants = []
 
