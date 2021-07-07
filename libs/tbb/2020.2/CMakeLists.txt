@@ -12,7 +12,8 @@ set(make_args -j$ENV{REZ_BUILD_THREAD_COUNT} VERBOSE=1)
 
 
 if(${REZ_BUILD_INSTALL})
-    set(install_cmd make install ${make_args})
+    set(install_cmd python build/build.py
+        --prefix $ENV{REZ_BUILD_INSTALL_PATH} --install-devel)
 else()
     set(install_cmd echo "skip install step")
 endif()
@@ -24,7 +25,8 @@ ExternalProject_add(
     URL ${url}
     PREFIX ${name}
     CONFIGURE_COMMAND echo "Dummy configure command"
-    BUILD_COMMAND cd ../${name} && make ${make_args}
+    BUILD_COMMAND cd ../${name} && echo | pwd && python build/build.py
+        --prefix $ENV{REZ_BUILD_INSTALL_PATH}
     INSTALL_COMMAND cd ../${name} && ${install_cmd}
 )
 

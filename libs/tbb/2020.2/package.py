@@ -17,12 +17,10 @@ description = \
     """
 
 build_requires = [
-    "cmake"
+    "python-3.7.10"
 ]
 
-requires = [
-
-]
+requires = []
 
 variants = []
 

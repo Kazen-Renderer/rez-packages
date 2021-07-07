@@ -20,9 +20,7 @@ build_requires = [
     "cmake"
 ]
 
-requires = [
-
-]
+requires = []
 
 variants = []
 
