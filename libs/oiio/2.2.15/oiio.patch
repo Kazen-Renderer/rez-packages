@@ -1,0 +1,13 @@
+diff -Naur oiio-2.2.15.1/src/cmake/externalpackages.cmake oiio-2.2.15.1_copy/src/cmake/externalpackages.cmake
+--- oiio-2.2.15.1/src/cmake/externalpackages.cmake	2021-06-04 05:50:22.000000000 +0800
++++ oiio-2.2.15.1_copy/src/cmake/externalpackages.cmake	2021-07-07 13:43:19.783179472 +0800
+@@ -164,8 +164,7 @@
+ # Intel TBB
+ set (TBB_USE_DEBUG_BUILD OFF)
+ checked_find_package (TBB 2017
+-                      DEFINITIONS  -DUSE_TBB=1
+-                      PREFER_CONFIG)
++                      DEFINITIONS  -DUSE_TBB=1)
+ 
+ checked_find_package (DCMTK VERSION_MIN 3.6.1)  # For DICOM images
+ checked_find_package (FFmpeg VERSION_MIN 2.6)

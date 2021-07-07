@@ -19,8 +19,16 @@ build_requires = [
 ]
 
 requires = [
-    "openexr-2.4.3",
     "boost-1.73",
+    "python-3.7.10",
+    "tbb-2020.2",
+    "openexr-2.4.3",
+    "ocio-2.0.1",
+    "openjpeg-2.4.0",
+    "jpeg-2.1.0",
+    "tiff-4.3.0",
+    "png-1.6.37",
+    "zlib-1.2.11",
 ]
 
 variants = []

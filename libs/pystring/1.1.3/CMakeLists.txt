@@ -21,7 +21,7 @@ ExternalProject_add(
     ${name}
     URL ${url}
     PREFIX ${name}
-    PATCH_COMMAND cd ../${name} && patch < $ENV{REZ_BUILD_SOURCE_PATH}/pystring.patch
+    PATCH_COMMAND cd ../${name} && patch -p1 < $ENV{REZ_BUILD_SOURCE_PATH}/pystring.patch
     CONFIGURE_COMMAND cmake
         -DCMAKE_INSTALL_PREFIX=$ENV{REZ_BUILD_INSTALL_PATH}
         ../${name}
