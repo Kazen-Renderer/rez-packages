@@ -36,7 +36,7 @@ uuid = "libs.pybind11"
 
 
 def commands():
-    env.CMAKE_MODULE_PATH.append("{root}/cmake")
+    env.CMAKE_PREFIX_PATH.append("{root}/share/cmake/{name}")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

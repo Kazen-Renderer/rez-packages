@@ -34,7 +34,7 @@ uuid = "libs.expat"
 
 
 def commands():
-    env.CMAKE_MODULE_PATH.append("{root}/cmake")
+    env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/{name}-{version}")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

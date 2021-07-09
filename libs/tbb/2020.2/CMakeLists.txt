@@ -13,7 +13,7 @@ set(make_args -j$ENV{REZ_BUILD_THREAD_COUNT} VERBOSE=1)
 
 if(${REZ_BUILD_INSTALL})
     set(install_cmd python build/build.py
-        --prefix $ENV{REZ_BUILD_INSTALL_PATH} --install-devel)
+        --prefix $ENV{REZ_BUILD_INSTALL_PATH} --install-devel --install-libs)
 else()
     set(install_cmd echo "skip install step")
 endif()
