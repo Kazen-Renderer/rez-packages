@@ -28,6 +28,7 @@ ExternalProject_add(
         -DCMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY=FALSE
         -DBoost_ROOT=$ENV{REZ_BOOST_ROOT}
         -DPython_EXECUTABLE=$ENV{REZ_PYTHON_ROOT}/bin/python3
+        -Dpybind11_ROOT=$ENV{REZ_PYBIND11_ROOT}
         -DTBB_ROOT=$ENV{REZ_TBB_ROOT}
         -DOpenEXR_ROOT=$ENV{REZ_OPENEXR_ROOT}
         -DOpenColorIO_ROOT=$ENV{REZ_OCIO_ROOT}
