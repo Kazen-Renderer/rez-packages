@@ -35,6 +35,7 @@ uuid = "libs.boost"
 
 
 def commands():
+    env.LD_LIBRARY_PATH.append("{root}/lib")
     env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake")
 
     if building:

@@ -42,6 +42,7 @@ uuid = "libs.oiio"
 
 
 def commands():
+    env.LD_LIBRARY_PATH.append("{root}/lib")
     env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/OpenImageIO")
 
     if building:
