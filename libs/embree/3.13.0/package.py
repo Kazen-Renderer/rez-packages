@@ -1,26 +1,25 @@
 import platform
 
-name = "tbb"
+name = "embree"
 
-version = "2020.2"
+version = "3.13.0"
 
 authors = [
-    "James Reinders",
-    "Rafael Asenjo",
-    "Michael J. Voss"
+    "Intel Corporation"
 ]
 
 description = \
     """
-    Intel® Threading Building Blocks (Intel® TBB) is a library that
-    supports scalable parallel programming using standard ISO C++ code.
+    Intel® Embree is a collection of high-performance ray tracing kernels, developed at Intel.
     """
 
 build_requires = [
-    "python-3.7.10"
+    "cmake"
 ]
 
-requires = []
+requires = [
+    "tbb-2020.2",
+]
 
 variants = []
 
@@ -29,12 +28,12 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-uuid = "libs.tbb"
+uuid = "embree-3.13.0"
 
 
 def commands():
     env.LD_LIBRARY_PATH.append("{root}/lib")
-    env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/{name}")
+    env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/embree-3.13.0")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")
