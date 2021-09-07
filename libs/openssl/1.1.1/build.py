@@ -41,6 +41,24 @@ def build(source_path, build_path, install_path, targets):
 
         # Configure & Make
         if platform.system() == "Windows":
+
+            """
+            Windows does not provide development tools by default and it seems
+            a little bit difficult to put them all in rez packages.
+            So here are the pre-requisites:
+              1. VS, including vc compiler and build tool. Related path and
+                 variables hard coded in winenv package.
+              2. strawberry perl for openssl configure, this is the recommended
+                 build tool for openssl.
+              3. NASM, build tool component for ASM code.
+
+            the official doc is a good reference:
+            https://wiki.openssl.org/index.php/Compilation_and_Installation#Windows
+
+            BTW, chocolatey seems a good compensatory package manager for Windows.
+            check https://chocolatey.org
+            """
+
             os.system('call C:/"Program Files (x86)/Microsoft Visual Studio"/2019/Community/VC/Auxiliary/Build/vcvarsall.bat amd64')
             os.environ['PATH'] = ';'.join([os.environ['PATH'], 'C:/Program Files (x86)/Windows Kits/10/bin/10.0.19041.0/x64'])
             subprocess.run('perl Configure VC-WIN64A --prefix={0}'.format(os.path.abspath(os.getenv("REZ_BUILD_INSTALL_PATH"))), shell=True)
