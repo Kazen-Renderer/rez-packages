@@ -43,6 +43,7 @@ if platform.system() == "Windows":
 
 
 def commands():
+    env.LD_LIBRARY_PATH.append("{root}/lib")
     env.CMAKE_MODULE_PATH.append("{root}/cmake")
 
     if building:

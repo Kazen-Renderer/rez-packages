@@ -35,5 +35,7 @@ uuid = "libs.tiff"
 
 
 def commands():
+    env.LD_LIBRARY_PATH.append("{root}/lib")
+    
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

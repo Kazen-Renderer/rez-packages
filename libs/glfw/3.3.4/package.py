@@ -1,23 +1,22 @@
 import platform
 
-name = "tbb"
+name = "glfw"
 
-version = "2020.2"
+version = "3.3.4"
 
 authors = [
-    "James Reinders",
-    "Rafael Asenjo",
-    "Michael J. Voss"
+    "Copyright © 2002-2006 Marcus Geelnard",
+    "Copyright © 2006-2019 Camilla Löwy"
 ]
 
 description = \
     """
-    Intel® Threading Building Blocks (Intel® TBB) is a library that
-    supports scalable parallel programming using standard ISO C++ code.
+    GLFW is an Open Source, multi-platform library for OpenGL, 
+    OpenGL ES and Vulkan development on the desktop.
     """
 
 build_requires = [
-    "python-3.7.10"
+    "cmake"
 ]
 
 requires = []
@@ -29,12 +28,12 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-uuid = "libs.tbb"
+uuid = "libs.glfw"
 
 
 def commands():
     env.LD_LIBRARY_PATH.append("{root}/lib")
-    env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/{name}")
+    env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/glfw3")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")
