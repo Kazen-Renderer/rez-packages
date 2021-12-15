@@ -7,7 +7,7 @@ include(ExternalProject)
 
 set(version $ENV{REZ_BUILD_PROJECT_VERSION})
 set(name $ENV{REZ_BUILD_PROJECT_NAME})
-set(url http://prdownloads.sourceforge.net/libpng/libpng-1.6.37.tar.xz?download)
+set(url https://github.com/catchorg/Catch2/archive/refs/tags/v2.13.7.tar.gz)
 set(make_args -j$ENV{REZ_BUILD_THREAD_COUNT} VERBOSE=1)
 
 
@@ -23,7 +23,8 @@ ExternalProject_add(
     PREFIX ${name}
     CONFIGURE_COMMAND cmake
         -DCMAKE_INSTALL_PREFIX=$ENV{REZ_BUILD_INSTALL_PATH}
-        -DZLIB_ROOT=$ENV{REZ_ZLIB_ROOT}
+        -DCMAKE_BUILD_TYPE=Release
+        -DCATCH_BUILD_STATIC_LIBRARY=ON
         ../${name}
     BUILD_COMMAND make ${make_args}
     INSTALL_COMMAND ${install_cmd}

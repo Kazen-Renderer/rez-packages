@@ -43,8 +43,10 @@ if platform.system() == "Windows":
 
 
 def commands():
+    env.PATH.append("{root}/bin")
     env.LD_LIBRARY_PATH.append("{root}/lib")
     env.CMAKE_MODULE_PATH.append("{root}/cmake")
+    env.OPENSSL_ROOT_DIR.append("{root}")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")
