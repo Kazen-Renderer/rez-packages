@@ -23,6 +23,7 @@ ExternalProject_add(
     PREFIX ${name}
     CONFIGURE_COMMAND cmake
         -DCMAKE_INSTALL_PREFIX=$ENV{REZ_BUILD_INSTALL_PATH}
+        -DZLIB_ROOT=$ENV{REZ_ZLIB_ROOT}
         ../${name}
     BUILD_COMMAND make ${make_args}
     INSTALL_COMMAND ${install_cmd}

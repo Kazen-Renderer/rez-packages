@@ -22,7 +22,7 @@ build_requires = [
 ]
 
 requires = [
-
+    "zlib"
 ]
 
 variants = []

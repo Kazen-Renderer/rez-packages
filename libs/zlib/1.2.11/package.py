@@ -41,4 +41,6 @@ def commands():
     env.CMAKE_MODULE_PATH.append("{root}/cmake")
 
     if building:
+        env.LDFLAGS.append('-L{root}/lib')
+        env.CPPFLAGS.append("-I{root}/include")
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")
