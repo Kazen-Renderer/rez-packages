@@ -27,6 +27,7 @@ requires = [
     "openexr-2.4.3",
     "oiio-2.2.15",
     "pugixml-1.11.4",
+    "pybind11-2.6",
 ]
 
 variants = []
@@ -41,7 +42,9 @@ uuid = "libs.osl"
 
 
 def commands():
-    env.CMAKE_MODULE_PATH.append("{root}/cmake")
+    env.LD_LIBRARY_PATH.append("{root}/lib")
+    env.CMAKE_PREFIX_PATH.append("{root}")
+    env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/OSL")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

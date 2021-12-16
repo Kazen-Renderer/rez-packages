@@ -33,7 +33,6 @@ uuid = "libs.catch2"
 
 def commands():
     env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/Catch2")
-    #env.Catch2_ROOT.append("{root}")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

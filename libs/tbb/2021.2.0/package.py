@@ -34,6 +34,7 @@ uuid = "libs.tbb"
 
 def commands():
     env.LD_LIBRARY_PATH.append("{root}/lib")
+    env.CMAKE_PREFIX_PATH.append("{root}")
     env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/TBB")
 
     if building:

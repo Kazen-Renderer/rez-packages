@@ -28,6 +28,7 @@ ExternalProject_add(
         -DOpenEXR_ROOT=$ENV{REZ_OPENEXR_ROOT}
         -DOpenImageIO_ROOT=$ENV{REZ_OIIO_ROOT}
         -Dpugixml_ROOT=$ENV{REZ_PUGIXML_ROOT}
+        -Dpybind11_ROOT=$ENV{REZ_PYBIND11_ROOT}
         -DPython_EXECUTABLE=$ENV{REZ_PYTHON_ROOT}/bin/python
         -DBUILD_TESTING=OFF
         ../${name}
