@@ -39,7 +39,7 @@ uuid = "libs.ocio"
 
 def commands():
     env.LD_LIBRARY_PATH.append("{root}/lib")
-    env.CMAKE_MODULE_PATH.append("{root}/cmake")
+    env.CMAKE_PREFIX_PATH.append("{root}")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

@@ -31,6 +31,7 @@ uuid = "libs.frozen"
 
 
 def commands():
-    env.FROZEN_ROOT.append("{root}")
+    env.CMAKE_PREFIX_PATH.append("{root}")
+
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

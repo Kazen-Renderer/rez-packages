@@ -29,6 +29,7 @@ requires = [
     "tiff-4.3.0",
     "png-1.6.37",
     "zlib-1.2.11",
+    "fmt-8.0.1",
 ]
 
 variants = []
@@ -43,6 +44,7 @@ uuid = "libs.oiio"
 
 def commands():
     env.LD_LIBRARY_PATH.append("{root}/lib")
+    env.CMAKE_PREFIX_PATH.append("{root}")
     env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/OpenImageIO")
 
     if building:

@@ -1,6 +1,6 @@
 import platform
 
-name = "osl"
+name = "osl_debug"
 
 version = "1.11.14"
 
@@ -38,7 +38,7 @@ elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
 
-uuid = "libs.osl"
+uuid = "libs.osl_debug"
 
 
 def commands():
