@@ -28,7 +28,8 @@ requires = [
 variants = []
 
 if platform.system() == "Darwin":
-    variants.append(["platform-osx", "arch-x86-64"])
+    variants.append(["platform-osx", "~arch==x86_64"])
+    requires.append("gettext-0.21")
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 

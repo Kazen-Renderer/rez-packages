@@ -1,17 +1,19 @@
 import platform
 
-name = "frozen"
+name = "gif"
 
-version = "1.0.1"
+version = "5.2.1"
 
 authors = [
-    "Serge Sans Paille"
+    "Michael Brown",
+    "Daniel Eisenbud",
+    "etc"
 ]
 
 description = \
     """
-    Header-only library that provides 0 cost initialization for immutable
-    containers, fixed-size containers, and various algorithms.
+    The GIFLIB project maintains the giflib service library,
+    which has been pulling images out of GIFs since 1989. 
     """
 
 build_requires = [
@@ -27,11 +29,11 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-uuid = "libs.frozen"
+uuid = "libs.gif"
 
 
 def commands():
-    env.CMAKE_PREFIX_PATH.append("{root}")
+    env.LD_LIBRARY_PATH.append("{root}/lib")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")
