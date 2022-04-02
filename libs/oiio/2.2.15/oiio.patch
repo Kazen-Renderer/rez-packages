@@ -1,13 +1,17 @@
-diff -Naur oiio-2.2.15.1/src/cmake/externalpackages.cmake oiio-2.2.15.1_copy/src/cmake/externalpackages.cmake
---- oiio-2.2.15.1/src/cmake/externalpackages.cmake	2021-06-04 05:50:22.000000000 +0800
-+++ oiio-2.2.15.1_copy/src/cmake/externalpackages.cmake	2021-07-07 13:43:19.783179472 +0800
-@@ -164,8 +164,7 @@
- # Intel TBB
- set (TBB_USE_DEBUG_BUILD OFF)
- checked_find_package (TBB 2017
--                      DEFINITIONS  -DUSE_TBB=1
--                      PREFER_CONFIG)
-+                      DEFINITIONS  -DUSE_TBB=1)
+diff -Naur oiio-2.2.15.1_copy/src/cmake/modules/FindOpenEXR.cmake oiio-2.2.15.1/src/cmake/modules/FindOpenEXR.cmake
+--- oiio-2.2.15.1_copy/src/cmake/modules/FindOpenEXR.cmake	2021-06-04 05:50:22.000000000 +0800
++++ oiio-2.2.15.1/src/cmake/modules/FindOpenEXR.cmake	2022-02-21 22:43:21.327777081 +0800
+@@ -34,12 +34,7 @@
+ #
+ #
  
- checked_find_package (DCMTK VERSION_MIN 3.6.1)  # For DICOM images
- checked_find_package (FFmpeg VERSION_MIN 2.6)
+-# First, try to fine just the right config files
+-find_package(Imath CONFIG)
+-if (NOT TARGET Imath::Imath)
+-    # Couldn't find Imath::Imath, maybe it's older and has IlmBase?
+-    find_package(IlmBase CONFIG)
+-endif ()
++find_package(IlmBase CONFIG)
+ find_package(OpenEXR CONFIG)
+ 
+ if (TARGET OpenEXR::OpenEXR AND TARGET Imath::Imath)
