@@ -30,7 +30,7 @@ variants = []
 if platform.system() == "Darwin":
     variants.append(["platform-osx", "arch-x86_64"])
 elif platform.system() == "Linux":
-    variants.append(["platform-linux", "arch-x86_64"])
+    variants.append(["platform-linux", "~arch==x86_64"])
 
 uuid = "softwares.cmake"
 

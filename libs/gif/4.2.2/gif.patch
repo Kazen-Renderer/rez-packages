@@ -1,0 +1,58 @@
+diff -Naur giflib-4.2.2/CMakeLists.txt giflib-4.2.2_mod/CMakeLists.txt
+--- giflib-4.2.2/CMakeLists.txt	1970-01-01 08:00:00.000000000 +0800
++++ giflib-4.2.2_mod/CMakeLists.txt	2022-04-02 20:03:37.000000000 +0800
+@@ -0,0 +1,30 @@
++# This's a simple CMake build script for giflib which
++# only builds the lib for my own Rez package build usage
++# Created by Joey Chen
++
++cmake_minimum_required(VERSION 3.12)
++
++project(giflib LANGUAGES C)
++
++set(GIF_SOURCES
++	lib/dgif_lib.c
++	lib/egif_lib.c
++	lib/gif_font.c
++	lib/gif_hash.c
++	lib/gifalloc.c
++	lib/gif_err.c
++	lib/gif_hash.h
++	lib/gif_lib_private.h)
++
++add_library(gif SHARED ${GIF_SOURCES})
++
++add_library(gif_static STATIC ${GIF_SOURCES})
++set_target_properties(gif_static PROPERTIES OUTPUT_NAME gif)
++
++set(HEADERS
++	lib/gif_lib.h)
++
++install(TARGETS gif gif_static
++	DESTINATION "${CMAKE_INSTALL_PREFIX}/lib")
++
++install(FILES ${HEADERS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include")
+\ No newline at end of file
+diff -Naur giflib-4.2.2/lib/dgif_lib.c giflib-4.2.2_mod/lib/dgif_lib.c
+--- giflib-4.2.2/lib/dgif_lib.c	2013-08-30 03:48:51.000000000 +0800
++++ giflib-4.2.2_mod/lib/dgif_lib.c	2022-04-02 19:48:48.000000000 +0800
+@@ -149,7 +149,7 @@
+         fclose(f);
+         free((char *)Private);
+         free((char *)GifFile);
+-	*Error = D_GIF_ERR_NO_SCRN_DSCR;
++	_GifError = D_GIF_ERR_NO_SCRN_DSCR;
+         return NULL;
+     }
+ 
+diff -Naur giflib-4.2.2/lib/gif_hash.c giflib-4.2.2_mod/lib/gif_hash.c
+--- giflib-4.2.2/lib/gif_hash.c	2013-08-30 03:32:18.000000000 +0800
++++ giflib-4.2.2_mod/lib/gif_hash.c	2022-04-02 19:48:34.000000000 +0800
+@@ -21,6 +21,7 @@
+ #include <fcntl.h>
+ #include <stdio.h>
+ #include <string.h>
++#include <stdlib.h>
+ 
+ #include "gif_lib.h"
+ #include "gif_hash.h"

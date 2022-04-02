@@ -1,0 +1,46 @@
+diff -Naur giflib-5.2.1/CMakeLists.txt giflib-5.2.1_mod/CMakeLists.txt
+--- giflib-5.2.1/CMakeLists.txt	1970-01-01 08:00:00.000000000 +0800
++++ giflib-5.2.1_mod/CMakeLists.txt	2022-04-02 16:39:11.000000000 +0800
+@@ -0,0 +1,41 @@
++cmake_minimum_required(VERSION 3.12)
++
++project(giflib LANGUAGES C)
++
++set(GIF_SOURCES
++	dgif_lib.c
++	egif_lib.c
++	gifalloc.c
++	gif_err.c
++	gif_font.c
++	gif_hash.c
++	openbsd-reallocarray.c)
++
++add_library(gif SHARED ${GIF_SOURCES})
++
++add_library(gif_static STATIC ${GIF_SOURCES})
++set_target_properties(gif_static PROPERTIES OUTPUT_NAME gif)
++
++
++set(UTIL_SOURCES
++	gif_err.c
++	qprintf.c
++	quantize.c
++	getarg.c)
++
++add_library(util SHARED ${UTIL_SOURCES})
++target_link_libraries(util stdc++)
++
++add_library(util_static STATIC ${UTIL_SOURCES})
++set_target_properties(util_static PROPERTIES OUTPUT_NAME util)
++
++set(HEADERS
++	gif_hash.h
++	gif_lib.h
++	gif_lib_private.h
++	getarg.h)
++
++install(TARGETS gif gif_static util util_static
++	DESTINATION "${CMAKE_INSTALL_PREFIX}/lib")
++
++install(FILES ${HEADERS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include")
+\ No newline at end of file

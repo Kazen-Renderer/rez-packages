@@ -27,15 +27,17 @@ requires = [
     "openjpeg-2.4.0",
     "jpeg-2.1.0",
     "tiff-4.3.0",
+    "gif-4.2.2",
     "png-1.6.37",
     "zlib-1.2.11",
     "fmt-8.0.1",
+    "pybind11-2.6.2"
 ]
 
 variants = []
 
 if platform.system() == "Darwin":
-    variants.append(["platform-osx", "arch-x86-64"])
+    variants.append(["platform-osx", "~arch==x86_64"])
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
