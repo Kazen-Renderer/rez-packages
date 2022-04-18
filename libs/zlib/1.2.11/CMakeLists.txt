@@ -6,7 +6,7 @@ include(ExternalProject)
 
 set(version $ENV{REZ_BUILD_PROJECT_VERSION})
 set(name $ENV{REZ_BUILD_PROJECT_NAME})
-set(url https://zlib.net/zlib-1.2.11.tar.gz)
+set(url https://sourceforge.net/projects/libpng/files/zlib/1.2.11/zlib-1.2.11.tar.gz/download)
 set(make_args VERBOSE=1)
 
 if($ENV{REZ_BUILD_INSTALL})
