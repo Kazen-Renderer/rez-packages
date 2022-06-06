@@ -6,7 +6,7 @@ include(ExternalProject)
 
 set(version $ENV{REZ_BUILD_PROJECT_VERSION})
 set(name $ENV{REZ_BUILD_PROJECT_NAME})
-set(url https://sourceforge.net/projects/libpng/files/zlib/1.2.11/zlib-1.2.11.tar.gz/download)
+set(url https://github.com/google/benchmark/archive/refs/tags/v1.6.1.tar.gz)
 set(make_args VERBOSE=1)
 
 if($ENV{REZ_BUILD_INSTALL})
@@ -22,6 +22,8 @@ ExternalProject_add(
     CONFIGURE_COMMAND cmake
         -DCMAKE_INSTALL_PREFIX=$ENV{REZ_BUILD_INSTALL_PATH}
         -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+        -DCMAKE_CXX_STANDARD=14
+        -DBENCHMARK_DOWNLOAD_DEPENDENCIES=ON
         ../${name}
     BUILD_COMMAND make ${make_args}
     INSTALL_COMMAND ${install_cmd}

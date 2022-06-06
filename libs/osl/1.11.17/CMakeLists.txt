@@ -6,7 +6,7 @@ include(ExternalProject)
 
 set(version $ENV{REZ_BUILD_PROJECT_VERSION})
 set(name $ENV{REZ_BUILD_PROJECT_NAME})
-set(url https://sourceforge.net/projects/libpng/files/zlib/1.2.11/zlib-1.2.11.tar.gz/download)
+set(url https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/archive/refs/tags/v1.11.17.0.tar.gz)
 set(make_args VERBOSE=1)
 
 if($ENV{REZ_BUILD_INSTALL})
@@ -22,6 +22,15 @@ ExternalProject_add(
     CONFIGURE_COMMAND cmake
         -DCMAKE_INSTALL_PREFIX=$ENV{REZ_BUILD_INSTALL_PATH}
         -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+        -DCMAKE_CXX_STANDARD=14
+        -DBoost_ROOT=$ENV{REZ_BOOST_ROOT}
+        -DZLIB_ROOT=$ENV{REZ_ZLIB_ROOT}
+        -DOpenEXR_ROOT=$ENV{REZ_OPENEXR_ROOT}
+        -DOpenImageIO_ROOT=$ENV{REZ_OIIO_ROOT}
+        -Dpugixml_ROOT=$ENV{REZ_PUGIXML_ROOT}
+        -Dpybind11_ROOT=$ENV{REZ_PYBIND11_ROOT}
+        -DPython_EXECUTABLE=$ENV{REZ_PYTHON_ROOT}/bin/python
+        -DBUILD_TESTING=OFF
         ../${name}
     BUILD_COMMAND make ${make_args}
     INSTALL_COMMAND ${install_cmd}

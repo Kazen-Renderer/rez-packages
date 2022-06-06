@@ -28,6 +28,7 @@ ExternalProject_add(
         -DBOOST_ROOT=$ENV{REZ_BOOST_ROOT}
         -DBoost_NO_SYSTEM_PATHS=ON
         -DZLIB_ROOT=$ENV{REZ_ZLIB_ROOT}
+        -DPYILMBASE_ENABLE=OFF
         # From https://github.com/AcademySoftwareFoundation/openexr/issues/684
         -DPython_EXECUTABLE=$ENV{REZ_PYTHON_ROOT}/bin/python
         -DPython3_EXECUTABLE=$ENV{REZ_PYTHON_ROOT}/bin/python

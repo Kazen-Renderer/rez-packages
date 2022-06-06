@@ -21,13 +21,13 @@ build_requires = [
 ]
 
 requires = [
-    "python-3.7.10"
+    "python-3.7"
 ]
 
 variants = []
 
 if platform.system() == "Darwin":
-    variants.append(["platform-osx", "arch-x86-64"])
+    variants.append(["platform-osx", "arch-x86_64"])
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 

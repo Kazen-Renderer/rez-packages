@@ -28,7 +28,7 @@ requires = [
 variants = []
 
 if platform.system() == "Darwin":
-    variants.append(["platform-osx", "arch-x86-64"])
+    variants.append(["platform-osx", "arch-x86_64"])
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
@@ -41,6 +41,6 @@ def commands():
     env.CMAKE_PREFIX_PATH.append("{root}")
 
     if building:
-        env.LDFLAGS.append('-L{root}/lib')
+        env.LDFLAGS.append('-L{root}/lib'.replace('\~', '\\\~'))
         env.CPPFLAGS.append("-I{root}/include")
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

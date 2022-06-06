@@ -1,17 +1,19 @@
 import platform
 
-name = "ocio"
+name = "osl"
 
-version = "2.0.1"
+version = "1.11.17"
 
 authors = [
-    "Sony Pictures Imageworks team"
+    "Larry Gritz",
 ]
 
 description = \
     """
-    A complete color management solution geared towards motion picture
-    production with an emphasis on visual effects and computer animation.
+    Open Shading Language (OSL) is a small but rich language for
+    programmable shading in advanced renderers and other applications,
+    ideal for describing materials, lights, displacement, and pattern
+    generation.
     """
 
 build_requires = [
@@ -19,12 +21,13 @@ build_requires = [
 ]
 
 requires = [
+    "boost-1.73.0",
+    "python-3.7.10",
+    "zlib-1.2.11",
     "openexr-2.4.3",
-    "expat-2.2.8",
-    "yamlcpp-0.6.3",
-    "pystring-1.1.3",
-    "pybind11-2.6.2",
-    "python-3.7",
+    "oiio-2.2.15",
+    "pugixml-1.11.4",
+    "pybind11-2.6",
 ]
 
 variants = []
@@ -34,12 +37,15 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-uuid = "libs.ocio"
+
+uuid = "libs.osl"
 
 
 def commands():
     env.LD_LIBRARY_PATH.append("{root}/lib")
+    env.PATH.append("{root}/bin")
     env.CMAKE_PREFIX_PATH.append("{root}")
+    env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/OSL")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

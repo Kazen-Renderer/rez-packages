@@ -6,7 +6,7 @@ include(ExternalProject)
 
 set(version $ENV{REZ_BUILD_PROJECT_VERSION})
 set(name $ENV{REZ_BUILD_PROJECT_NAME})
-set(url https://sourceforge.net/projects/libpng/files/zlib/1.2.11/zlib-1.2.11.tar.gz/download)
+set(url https://ftp.gnu.org/pub/gnu/gettext/gettext-0.21.tar.gz)
 set(make_args VERBOSE=1)
 
 if($ENV{REZ_BUILD_INSTALL})
@@ -19,12 +19,10 @@ ExternalProject_add(
     ${name}
     URL ${url}
     PREFIX ${name}
-    CONFIGURE_COMMAND cmake
-        -DCMAKE_INSTALL_PREFIX=$ENV{REZ_BUILD_INSTALL_PATH}
-        -DCMAKE_POSITION_INDEPENDENT_CODE=ON
-        ../${name}
-    BUILD_COMMAND make ${make_args}
-    INSTALL_COMMAND ${install_cmd}
+    CONFIGURE_COMMAND cd ../${name} &&
+        ./configure --prefix=$ENV{REZ_BUILD_INSTALL_PATH}
+    BUILD_COMMAND cd ../${name} && make ${make_args}
+    INSTALL_COMMAND cd ../${name} && ${install_cmd}
 )
 
 install(CODE "message(STATUS Dummy Install Target)")

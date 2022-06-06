@@ -1,23 +1,20 @@
 import platform
 
-name = "tbb"
+name = "gbenchmark"
 
-version = "2020.2"
+version = "1.6.1"
 
 authors = [
-    "James Reinders",
-    "Rafael Asenjo",
-    "Michael J. Voss"
+    "Dominic Hamon",
 ]
 
 description = \
     """
-    Intel® Threading Building Blocks (Intel® TBB) is a library that
-    supports scalable parallel programming using standard ISO C++ code.
+    A library to benchmark code snippets, similar to unit tests.
     """
 
 build_requires = [
-    "python-3.7"
+    "cmake"
 ]
 
 requires = []
@@ -29,13 +26,13 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-uuid = "libs.tbb"
+
+uuid = "libs.gbenchmark"
 
 
 def commands():
     env.LD_LIBRARY_PATH.append("{root}/lib")
     env.CMAKE_PREFIX_PATH.append("{root}")
-    env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/{name}")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")
