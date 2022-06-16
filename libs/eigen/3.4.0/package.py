@@ -1,24 +1,21 @@
 import platform
 
-name = "gif"
+name = "eigen"
 
-version = "4.2.2"
+version = "3.4.0"
 
 authors = [
-    "Michael Brown",
-    "Daniel Eisenbud",
-    "etc"
+    "Benoît Jacob",
+    "Gaël Guennebaud"
 ]
 
 description = \
     """
-    The GIFLIB project maintains the giflib service library,
-    which has been pulling images out of GIFs since 1989. 
+    Eigen is a C++ template library for linear algebra: matrices, vectors,
+    numerical solvers, and related algorithms.
     """
 
-build_requires = [
-    "cmake"
-]
+build_requires = []
 
 requires = []
 
@@ -29,11 +26,12 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-uuid = "libs.gif"
+uuid = "libs.eigen"
 
 
 def commands():
     env.LD_LIBRARY_PATH.append("{root}/lib")
+    env.CMAKE_PREFIX_PATH.append("{root}/share/eigen3/cmake")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

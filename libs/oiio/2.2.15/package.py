@@ -20,7 +20,7 @@ build_requires = [
 
 requires = [
     "boost-1.73",
-    "python-3.7.10",
+    "python-3.7",
     "tbb-2020.2",
     "openexr-2.4.3",
     "ocio-2.0.1",
@@ -37,7 +37,7 @@ requires = [
 variants = []
 
 if platform.system() == "Darwin":
-    variants.append(["platform-osx", "~arch==x86_64"])
+    variants.append(["platform-osx", "arch-x86_64"])
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
@@ -45,6 +45,7 @@ uuid = "libs.oiio"
 
 
 def commands():
+    env.PATH.append("{root}/bin")
     env.LD_LIBRARY_PATH.append("{root}/lib")
     env.CMAKE_PREFIX_PATH.append("{root}")
     env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/OpenImageIO")

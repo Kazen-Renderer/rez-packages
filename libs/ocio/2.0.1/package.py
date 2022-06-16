@@ -24,13 +24,13 @@ requires = [
     "yamlcpp-0.6.3",
     "pystring-1.1.3",
     "pybind11-2.6.2",
-    "python-3.7.10",
+    "python-3.7",
 ]
 
 variants = []
 
 if platform.system() == "Darwin":
-    variants.append(["platform-osx", "~arch==x86_64"])
+    variants.append(["platform-osx", "arch-x86_64"])
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 

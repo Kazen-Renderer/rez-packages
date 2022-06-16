@@ -20,7 +20,7 @@ build_requires = [
 ]
 
 requires = [
-    "python-3.7.10",
+    "python-3.7",
     "boost-1.73",
     "zlib-1.2.11"
 ]
@@ -28,7 +28,7 @@ requires = [
 variants = []
 
 if platform.system() == "Darwin":
-    variants.append(["platform-osx", "~arch==x86_64"])
+    variants.append(["platform-osx", "arch-x86_64"])
     requires.append("gettext-0.21")
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
@@ -40,6 +40,7 @@ def commands():
     env.LD_LIBRARY_PATH.append("{root}/lib")
     env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/IlmBase")
     env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/OpenEXR")
+    env.OPENEXR_ROOT.append("{root}")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

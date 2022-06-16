@@ -1,26 +1,26 @@
 import platform
 
-name = "yamlcpp"
+name = "python"
 
-version = "0.6.3"
+version = "3.7.13"
 
 authors = [
-    "Jesse Beder"
+    "Guido van Rossum"
 ]
 
 description = \
     """
-    yaml-cpp is a YAML parser and emitter in C++ matching the YAML 1.2 spec.
+    Python is an interpreted high-level general-purpose programming 
+    language.
     """
 
 build_requires = [
-    "cmake"
+
 ]
 
 requires = [
-    "python-3.7",
-    "boost-1.73",
-    "zlib-1.2.11"
+    "zlib-1.2.11",
+    "openssl-1.1.1"
 ]
 
 variants = []
@@ -30,12 +30,12 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-uuid = "libs.yamlcpp"
+uuid = "softwares.python"
 
 
 def commands():
-    env.LD_LIBRARY_PATH.append("{root}/lib")
-    env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/yaml-cpp")
+    env.CMAKE_MODULE_PATH.append("{root}/cmake")
+    env.PATH.append("{root}/bin")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

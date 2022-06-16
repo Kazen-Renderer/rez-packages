@@ -25,6 +25,7 @@ ExternalProject_add(
         -DCMAKE_POSITION_INDEPENDENT_CODE=ON
         -DCMAKE_FIND_USE_CMAKE_PATH=FALSE
         -DCMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY=FALSE
+        -DCMAKE_BUILD_TYPE=Debug
         -DBoost_ROOT=$ENV{REZ_BOOST_ROOT}
         -DPython_EXECUTABLE=$ENV{REZ_PYTHON_ROOT}/bin/python3
         -Dpybind11_ROOT=$ENV{REZ_PYBIND11_ROOT}
@@ -38,9 +39,9 @@ ExternalProject_add(
         -DGIF_ROOT=$ENV{REZ_GIF_ROOT}
         -DZLIB_ROOT=$ENV{REZ_ZLIB_ROOT}
         -DOIIO_BUILD_TESTS=OFF
-        -DOIIO_BUILD_TOOLS=OFF
-        -DUSE_QT=OFF
-        -DUSE_OPENGL=OFF
+        -DOIIO_BUILD_TOOLS=ON
+        #-DUSE_QT=OFF
+        #-DUSE_OPENGL=OFF
         ../${name}
     BUILD_COMMAND make ${make_args}
     INSTALL_COMMAND ${install_cmd}

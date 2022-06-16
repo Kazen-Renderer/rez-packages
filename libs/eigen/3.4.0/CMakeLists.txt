@@ -4,12 +4,13 @@ include(RezBuild)
 include(RezRepository)
 include(ExternalProject)
 
+
 set(version $ENV{REZ_BUILD_PROJECT_VERSION})
 set(name $ENV{REZ_BUILD_PROJECT_NAME})
-set(url https://sourceforge.net/projects/libpng/files/zlib/1.2.11/zlib-1.2.11.tar.gz/download)
-set(make_args VERBOSE=1)
+set(url https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.gz)
 
-if($ENV{REZ_BUILD_INSTALL})
+
+if(${REZ_BUILD_INSTALL})
     set(install_cmd make install ${make_args})
 else()
     set(install_cmd echo "skip install step")
@@ -21,7 +22,7 @@ ExternalProject_add(
     PREFIX ${name}
     CONFIGURE_COMMAND cmake
         -DCMAKE_INSTALL_PREFIX=$ENV{REZ_BUILD_INSTALL_PATH}
-        -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+        -DCMAKE_BUILD_TYPE=Release
         ../${name}
     BUILD_COMMAND make ${make_args}
     INSTALL_COMMAND ${install_cmd}
