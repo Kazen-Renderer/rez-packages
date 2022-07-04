@@ -28,7 +28,7 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-uuid = "enoki-0.1.0"
+uuid = "libs.enoki"
 
 
 def commands():
@@ -60,5 +60,6 @@ def commands():
     # enoki_set_native_flags()
     # include_directories($ENV{REZ_ENOKI_ROOT}/include)
 
+    env.CMAKE_PREFIX_PATH.append("{root}")
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")
