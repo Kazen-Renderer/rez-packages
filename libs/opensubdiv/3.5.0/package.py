@@ -1,31 +1,26 @@
 import platform
 
-name = "ocio"
+name = "opensubdiv"
 
-version = "2.0.1"
+version = "3.5.0"
 
 authors = [
-    "Sony Pictures Imageworks team"
+    "Pixar Developers"
 ]
 
 description = \
     """
-    A complete color management solution geared towards motion picture
-    production with an emphasis on visual effects and computer animation.
+    OpenSubdiv is a set of open source libraries that implement high performance
+    subdivision surface (subdiv) evaluation on massively parallel CPU and GPU
+    architectures. This code path is optimized for drawing deforming surfaces with
+    static topology at interactive framerates.
     """
 
 build_requires = [
     "cmake"
 ]
 
-requires = [
-    "openexr-2.4.3",
-    "expat-2.2.8",
-    "yamlcpp-0.6.3",
-    "pystring-1.1.3",
-    "pybind11-2.6.2",
-    "python-3.7",
-]
+requires = []
 
 variants = []
 
@@ -34,13 +29,12 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-uuid = "libs.ocio"
+uuid = "libs.opensubdiv"
 
 
 def commands():
     env.LD_LIBRARY_PATH.append("{root}/lib")
     env.CMAKE_PREFIX_PATH.append("{root}")
-    env.OCIO_ROOT.append("{root}")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")
