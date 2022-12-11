@@ -21,7 +21,6 @@ build_requires = [
 requires = [
     "zlib-1.2.11",
     "openssl-1.1.1",
-    "sqlite-3"
 ]
 
 variants = []

@@ -1,16 +1,18 @@
 import platform
 
-name = "expat"
+name = "pybind11"
 
-version = "2.2.8"
+version = "2.10.1"
 
 authors = [
-    "James Clark"
+    "Wenzel Jacob"
 ]
 
 description = \
     """
-    Expat is a stream-oriented XML parser.
+    pybind11 is a lightweight header-only library that exposes C++ types
+    in Python and vice versa, mainly to create Python bindings of existing
+    C++ code.
     """
 
 build_requires = [
@@ -18,6 +20,7 @@ build_requires = [
 ]
 
 requires = [
+    "python-3.10",
     "zlib-1.2.11"
 ]
 
@@ -28,12 +31,13 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-uuid = "libs.expat"
+uuid = "libs.pybind11"
 
 
 def commands():
     env.LD_LIBRARY_PATH.append("{root}/lib")
-    env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/{name}-{version}")
+    env.CMAKE_PREFIX_PATH.append("{root}/share/cmake/pybind11")
+    env.CMAKE_MODULE_PATH.append("{root}/share/cmake/pybind11")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

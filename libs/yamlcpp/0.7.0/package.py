@@ -1,16 +1,16 @@
 import platform
 
-name = "expat"
+name = "yamlcpp"
 
-version = "2.2.8"
+version = "0.7.0"
 
 authors = [
-    "James Clark"
+    "Jesse Beder"
 ]
 
 description = \
     """
-    Expat is a stream-oriented XML parser.
+    yaml-cpp is a YAML parser and emitter in C++ matching the YAML 1.2 spec.
     """
 
 build_requires = [
@@ -28,12 +28,12 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-uuid = "libs.expat"
+uuid = "libs.yamlcpp"
 
 
 def commands():
     env.LD_LIBRARY_PATH.append("{root}/lib")
-    env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/{name}-{version}")
+    env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/yaml-cpp")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

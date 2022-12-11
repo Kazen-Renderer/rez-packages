@@ -2,7 +2,7 @@ import platform
 
 name = "expat"
 
-version = "2.2.8"
+version = "2.5.0"
 
 authors = [
     "James Clark"

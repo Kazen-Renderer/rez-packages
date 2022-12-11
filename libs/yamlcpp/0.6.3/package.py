@@ -18,8 +18,6 @@ build_requires = [
 ]
 
 requires = [
-    "python-3.7",
-    "boost-1.73",
     "zlib-1.2.11"
 ]
 
