@@ -27,7 +27,7 @@ requires = [
     "openjpeg-2.4.0",
     "jpeg-2.1.0",
     "tiff-4.3.0",
-    "gif-4.2.2",
+    "gif-5.2",
     "png-1.6.37",
     "zlib-1.2.11",
     "fmt-8.0.1",
