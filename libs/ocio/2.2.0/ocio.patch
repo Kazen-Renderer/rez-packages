@@ -1,0 +1,30 @@
+diff -Naur OpenColorIO-2.2.0/src/OpenColorIO/OCIOZArchive.cpp OpenColorIO-2.2.0_mod/src/OpenColorIO/OCIOZArchive.cpp
+--- OpenColorIO-2.2.0/src/OpenColorIO/OCIOZArchive.cpp	2022-11-01 06:27:35.000000000 +0800
++++ OpenColorIO-2.2.0_mod/src/OpenColorIO/OCIOZArchive.cpp	2022-12-11 07:52:53.192488143 +0800
+@@ -17,16 +17,16 @@
+ 
+ #include "OCIOZArchive.h"
+ 
+-#include "minizip-ng/mz.h"
+-#include "minizip-ng/mz_os.h"
+-#include "minizip-ng/mz_strm.h"
+-#include "minizip-ng/mz_strm_buf.h"
+-#include "minizip-ng/mz_strm_mem.h"
+-#include "minizip-ng/mz_strm_os.h"
+-#include "minizip-ng/mz_strm_split.h"
+-#include "minizip-ng/mz_strm_zlib.h"
+-#include "minizip-ng/mz_zip.h"
+-#include "minizip-ng/mz_zip_rw.h"
++#include "mz.h"
++#include "mz_os.h"
++#include "mz_strm.h"
++#include "mz_strm_buf.h"
++#include "mz_strm_mem.h"
++#include "mz_strm_os.h"
++#include "mz_strm_split.h"
++#include "mz_strm_zlib.h"
++#include "mz_zip.h"
++#include "mz_zip_rw.h"
+ 
+ namespace OCIO_NAMESPACE
+ {

@@ -1,16 +1,17 @@
 import platform
 
-name = "expat"
+name = "minizip"
 
-version = "2.2.8"
+version = "3.0.7"
 
 authors = [
-    "James Clark"
+    "Nathan Moinvaziri",
 ]
 
 description = \
     """
-    Expat is a stream-oriented XML parser.
+    The GIFLIB project maintains the giflib service library,
+    which has been pulling images out of GIFs since 1989. 
     """
 
 build_requires = [
@@ -18,7 +19,7 @@ build_requires = [
 ]
 
 requires = [
-    "zlib-1.2.11"
+    "zlib-1.2"
 ]
 
 variants = []
@@ -28,12 +29,11 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-uuid = "libs.expat"
+uuid = "libs.minizip"
 
 
 def commands():
     env.LD_LIBRARY_PATH.append("{root}/lib")
-    env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/{name}-{version}")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

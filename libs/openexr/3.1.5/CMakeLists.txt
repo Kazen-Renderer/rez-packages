@@ -4,12 +4,14 @@ include(RezBuild)
 include(RezRepository)
 include(ExternalProject)
 
+
 set(version $ENV{REZ_BUILD_PROJECT_VERSION})
 set(name $ENV{REZ_BUILD_PROJECT_NAME})
-set(url https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/archive/refs/tags/v1.11.14.2.tar.gz)
+set(url https://github.com/AcademySoftwareFoundation/openexr/archive/refs/tags/v3.1.5.tar.gz)
 set(make_args -j$ENV{REZ_BUILD_THREAD_COUNT} VERBOSE=1)
 
-if($ENV{REZ_BUILD_INSTALL})
+
+if(${REZ_BUILD_INSTALL})
     set(install_cmd make install ${make_args})
 else()
     set(install_cmd echo "skip install step")
@@ -19,18 +21,17 @@ ExternalProject_add(
     ${name}
     URL ${url}
     PREFIX ${name}
-    CONFIGURE_COMMAND cmake
+    CONFIGURE_COMMAND cmake -DILMBASE_BUILD_BOTH_STATIC_SHARED=ON 
+        -DOPENEXR_BUILD_BOTH_STATIC_SHARED=ON 
+        -DOPENEXR_VIEWERS_ENABLE=OFF
         -DCMAKE_INSTALL_PREFIX=$ENV{REZ_BUILD_INSTALL_PATH}
-        -DCMAKE_POSITION_INDEPENDENT_CODE=ON
-        -DCMAKE_CXX_STANDARD=14
-        -DBoost_ROOT=$ENV{REZ_BOOST_ROOT}
+        -DBOOST_ROOT=$ENV{REZ_BOOST_ROOT}
+        -DBoost_NO_SYSTEM_PATHS=ON
         -DZLIB_ROOT=$ENV{REZ_ZLIB_ROOT}
-        -DOpenEXR_ROOT=$ENV{REZ_OPENEXR_ROOT}
-        -DOpenImageIO_ROOT=$ENV{REZ_OIIO_ROOT}
-        -Dpugixml_ROOT=$ENV{REZ_PUGIXML_ROOT}
-        -Dpybind11_ROOT=$ENV{REZ_PYBIND11_ROOT}
+        -DPYILMBASE_ENABLE=OFF
+        # From https://github.com/AcademySoftwareFoundation/openexr/issues/684
         -DPython_EXECUTABLE=$ENV{REZ_PYTHON_ROOT}/bin/python
-        -DBUILD_TESTING=OFF
+        -DPython3_EXECUTABLE=$ENV{REZ_PYTHON_ROOT}/bin/python
         ../${name}
     BUILD_COMMAND make ${make_args}
     INSTALL_COMMAND ${install_cmd}

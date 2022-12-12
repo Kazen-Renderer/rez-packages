@@ -7,7 +7,7 @@ include(ExternalProject)
 set(version $ENV{REZ_BUILD_PROJECT_VERSION})
 set(name $ENV{REZ_BUILD_PROJECT_NAME})
 set(url https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/archive/refs/tags/v1.11.17.0.tar.gz)
-set(make_args VERBOSE=1)
+set(make_args -j$ENV{REZ_BUILD_THREAD_COUNT} VERBOSE=1)
 
 if($ENV{REZ_BUILD_INSTALL})
     set(install_cmd make install ${make_args})

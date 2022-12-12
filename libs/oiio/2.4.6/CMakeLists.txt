@@ -6,7 +6,7 @@ include(ExternalProject)
 
 set(version $ENV{REZ_BUILD_PROJECT_VERSION})
 set(name $ENV{REZ_BUILD_PROJECT_NAME})
-set(url https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/archive/refs/tags/v1.11.14.2.tar.gz)
+set(url https://github.com/OpenImageIO/oiio/archive/refs/tags/v2.4.6.0.tar.gz)
 set(make_args -j$ENV{REZ_BUILD_THREAD_COUNT} VERBOSE=1)
 
 if($ENV{REZ_BUILD_INSTALL})
@@ -22,15 +22,25 @@ ExternalProject_add(
     CONFIGURE_COMMAND cmake
         -DCMAKE_INSTALL_PREFIX=$ENV{REZ_BUILD_INSTALL_PATH}
         -DCMAKE_POSITION_INDEPENDENT_CODE=ON
-        -DCMAKE_CXX_STANDARD=14
+        -DCMAKE_FIND_USE_CMAKE_PATH=FALSE
+        -DCMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY=FALSE
+        -DCMAKE_BUILD_TYPE=Debug
         -DBoost_ROOT=$ENV{REZ_BOOST_ROOT}
-        -DZLIB_ROOT=$ENV{REZ_ZLIB_ROOT}
-        -DOpenEXR_ROOT=$ENV{REZ_OPENEXR_ROOT}
-        -DOpenImageIO_ROOT=$ENV{REZ_OIIO_ROOT}
-        -Dpugixml_ROOT=$ENV{REZ_PUGIXML_ROOT}
+        -DPython_EXECUTABLE=$ENV{REZ_PYTHON_ROOT}/bin/python3
         -Dpybind11_ROOT=$ENV{REZ_PYBIND11_ROOT}
-        -DPython_EXECUTABLE=$ENV{REZ_PYTHON_ROOT}/bin/python
-        -DBUILD_TESTING=OFF
+        -DTBB_ROOT=$ENV{REZ_TBB_ROOT}
+        -DOpenEXR_ROOT=$ENV{REZ_OPENEXR_ROOT}
+        -DOpenColorIO_ROOT=$ENV{REZ_OCIO_ROOT}
+        -DOpenJPEG_ROOT=$ENV{REZ_OPENJPEG_ROOT}
+        -DTIFF_ROOT=$ENV{REZ_TIFF_ROOT}
+        -DPNG_ROOT=$ENV{REZ_PNG_ROOT}
+        -DJPEGTurbo_ROOT=$ENV{REZ_JPEG_ROOT}
+        -DGIF_ROOT=$ENV{REZ_GIF_ROOT}
+        -DZLIB_ROOT=$ENV{REZ_ZLIB_ROOT}
+        -DOIIO_BUILD_TESTS=OFF
+        -DOIIO_BUILD_TOOLS=ON
+        #-DUSE_QT=OFF
+        #-DUSE_OPENGL=OFF
         ../${name}
     BUILD_COMMAND make ${make_args}
     INSTALL_COMMAND ${install_cmd}

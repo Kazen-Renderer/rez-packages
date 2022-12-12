@@ -1,25 +1,26 @@
 import platform
 
-name = "expat"
+name = "tbb"
 
-version = "2.2.8"
+version = "2020.3"
 
 authors = [
-    "James Clark"
+    "James Reinders",
+    "Rafael Asenjo",
+    "Michael J. Voss"
 ]
 
 description = \
     """
-    Expat is a stream-oriented XML parser.
+    Intel® Threading Building Blocks (Intel® TBB) is a library that
+    supports scalable parallel programming using standard ISO C++ code.
     """
 
 build_requires = [
-    "cmake"
+    "python-3.10"
 ]
 
-requires = [
-    "zlib-1.2.11"
-]
+requires = []
 
 variants = []
 
@@ -28,12 +29,13 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-uuid = "libs.expat"
+uuid = "libs.tbb"
 
 
 def commands():
     env.LD_LIBRARY_PATH.append("{root}/lib")
-    env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/{name}-{version}")
+    env.CMAKE_PREFIX_PATH.append("{root}")
+    env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/{name}")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

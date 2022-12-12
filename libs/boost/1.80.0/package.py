@@ -1,24 +1,27 @@
 import platform
 
-name = "expat"
+name = "boost"
 
-version = "2.2.8"
+version = "1.80.0"
 
 authors = [
-    "James Clark"
+    "Boost community"
 ]
 
 description = \
     """
-    Expat is a stream-oriented XML parser.
+    Boost is a set of libraries for the C++ programming language 
+    that provides support for tasks and structures such as linear 
+    algebra, pseudorandom number generation, multithreading,
+    image processing, regular expressions, and unit testing.
     """
 
 build_requires = [
-    "cmake"
+
 ]
 
 requires = [
-    "zlib-1.2.11"
+    "python-3.10"
 ]
 
 variants = []
@@ -28,12 +31,12 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-uuid = "libs.expat"
+uuid = "libs.boost"
 
 
 def commands():
     env.LD_LIBRARY_PATH.append("{root}/lib")
-    env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/{name}-{version}")
+    env.CMAKE_PREFIX_PATH.append("{root}")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

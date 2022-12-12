@@ -1,31 +1,28 @@
 import platform
 
-name = "ocio"
+name = "llvm"
 
-version = "2.0.1"
+version = "15.0.6"
 
 authors = [
-    "Sony Pictures Imageworks team"
+    "Vikram Adve",
+    "Chris Lattner",
+    "LLVM Developer Group"
 ]
 
 description = \
     """
-    A complete color management solution geared towards motion picture
-    production with an emphasis on visual effects and computer animation.
+    The LLVM Project is a collection of modular and reusable compiler and toolchain
+    technologies. Despite its name, LLVM has little to do with traditional virtual
+    machines. The name "LLVM" itself is not an acronym; it is the full name of the
+    project.
     """
 
 build_requires = [
     "cmake"
 ]
 
-requires = [
-    "openexr-2.4.3",
-    "expat-2.2.8",
-    "yamlcpp-0.6.3",
-    "pystring-1.1.3",
-    "pybind11-2.6.2",
-    "python-3.7",
-]
+requires = []
 
 variants = []
 
@@ -34,13 +31,12 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-uuid = "libs.ocio"
+uuid = "libs.llvm"
 
 
 def commands():
     env.LD_LIBRARY_PATH.append("{root}/lib")
     env.CMAKE_PREFIX_PATH.append("{root}")
-    env.OCIO_ROOT.append("{root}")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

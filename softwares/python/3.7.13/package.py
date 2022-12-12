@@ -20,7 +20,7 @@ build_requires = [
 
 requires = [
     "zlib-1.2.11",
-    "openssl-1.1.1"
+    "openssl-1.1.1",
 ]
 
 variants = []
