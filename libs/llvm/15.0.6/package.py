@@ -35,8 +35,10 @@ uuid = "libs.llvm"
 
 
 def commands():
+    env.PATH.append("{root}/bin")
     env.LD_LIBRARY_PATH.append("{root}/lib")
-    env.CMAKE_PREFIX_PATH.append("{root}")
+    env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/clang")
+    env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/llvm")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

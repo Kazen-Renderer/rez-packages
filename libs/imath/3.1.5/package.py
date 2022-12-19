@@ -1,17 +1,20 @@
 import platform
 
-name = "oiio"
+name = "imath"
 
-version = "2.4.6"
+version = "3.1.5"
 
 authors = [
-    "Larry Gritz"
+    "ILM"
 ]
 
 description = \
     """
-    OpenImageIO is a library for reading and writing images, and 
-    a bunch of related classes, utilities, and applications.
+    Imath is a basic, light-weight, and efficient C++ representation of
+    2D and 3D vectors and matrices and other simple but useful
+    mathematical objects, functions, and data types common in computer
+    graphics applications, including the “half” 16-bit floating-point
+    type.
     """
 
 build_requires = [
@@ -21,18 +24,6 @@ build_requires = [
 requires = [
     "boost-1.80",
     "python-3.10",
-    "tbb-2020.3",
-    "imath-3.1",
-    "openexr-3.1",
-    "ocio-2.2",
-    "openjpeg-2.4.0",
-    "jpeg-2.1.0",
-    "tiff-4.3.0",
-    "gif-5.2",
-    "png-1.6.37",
-    "zlib-1.2.11",
-    "fmt-8.0.1",
-    "pybind11-2.10"
 ]
 
 variants = []
@@ -46,10 +37,9 @@ uuid = "libs.oiio"
 
 
 def commands():
-    env.PATH.append("{root}/bin")
     env.LD_LIBRARY_PATH.append("{root}/lib")
     env.CMAKE_PREFIX_PATH.append("{root}")
-    env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/OpenImageIO")
+    env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/Imath")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")
