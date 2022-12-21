@@ -22,7 +22,6 @@ requires = [
     "boost-1.80",
     "python-3.10",
     "tbb-2020.3",
-    "imath-3.1",
     "openexr-3.1",
     "ocio-2.2",
     "openjpeg-2.4.0",

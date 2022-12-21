@@ -40,6 +40,7 @@ def commands():
     env.LD_LIBRARY_PATH.append("{root}/lib")
     env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/IlmBase")
     env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/OpenEXR")
+    env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/Imath")
     env.OPENEXR_ROOT.append("{root}")
 
     if building:
