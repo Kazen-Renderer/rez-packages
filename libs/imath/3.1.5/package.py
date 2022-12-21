@@ -37,6 +37,7 @@ uuid = "libs.oiio"
 
 
 def commands():
+    env.CPATH.append("{root}/include")
     env.LD_LIBRARY_PATH.append("{root}/lib")
     env.CMAKE_PREFIX_PATH.append("{root}")
     env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/Imath")
