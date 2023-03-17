@@ -7,7 +7,7 @@ include(ExternalProject)
 
 set(version $ENV{REZ_BUILD_PROJECT_VERSION})
 set(name $ENV{REZ_BUILD_PROJECT_NAME})
-set(url https://gitlab.com/libtiff/libtiff/-/archive/v4.3.0/libtiff-v4.3.0.tar.gz)
+set(url https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.8.0.tar.gz)
 set(make_args -j$ENV{REZ_BUILD_THREAD_COUNT} VERBOSE=1)
 
 
@@ -23,9 +23,8 @@ ExternalProject_add(
     PREFIX ${name}
     CONFIGURE_COMMAND cmake
         -DCMAKE_INSTALL_PREFIX=$ENV{REZ_BUILD_INSTALL_PATH}
-        -DCMAKE_POLICY_DEFAULT_CMP0074=NEW
-        -DZLIB_ROOT=$ENV{REZ_ZLIB_ROOT}
-        -DJPEG_ROOT=$ENV{REZ_JPEG_ROOT}
+        -DTBB_TEST=OFF
+        -DTBB_STRICT=OFF
         ../${name}
     BUILD_COMMAND make ${make_args}
     INSTALL_COMMAND ${install_cmd}
