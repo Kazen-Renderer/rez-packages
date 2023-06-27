@@ -20,7 +20,9 @@ build_requires = [
     "cmake"
 ]
 
-requires = []
+requires = [
+    "tbb-2020.3",
+]
 
 variants = []
 
