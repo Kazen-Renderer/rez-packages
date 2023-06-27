@@ -19,6 +19,7 @@ build_requires = [
 ]
 
 requires = [
+    "imath-3.1",
     "openexr-3.1",
     "expat-2.5",
     "yamlcpp-0.7",
