@@ -1,17 +1,17 @@
-import platform, os
+import platform
 
-name = "minizip"
+name = "spirvcross"
 
-version = "3.0.7"
+version = "2021.1.15"
 
 authors = [
-    "Nathan Moinvaziri",
+    "Hans-Kristian Arntzen and etc..."
 ]
 
 description = \
     """
-    The GIFLIB project maintains the giflib service library,
-    which has been pulling images out of GIFs since 1989. 
+    SPIRV-Cross is a tool designed for parsing and converting SPIR-V to
+    other shader languages.
     """
 
 build_requires = [
@@ -19,7 +19,7 @@ build_requires = [
 ]
 
 requires = [
-    "zlib-1.2"
+    "python-3.10"
 ]
 
 variants = []
@@ -29,13 +29,13 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-uuid = "libs.minizip"
+uuid = "libs.spirvcross"
 
 
 def commands():
-    env.PATH.append("{root}/lib")
     env.LD_LIBRARY_PATH.append("{root}/lib")
-    env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/minizip")
+    env.CMAKE_PREFIX_PATH.append("{root}")
+    env.SPIRVCROSS_ROOT.append("{root}")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

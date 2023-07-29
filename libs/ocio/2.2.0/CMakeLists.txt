@@ -21,7 +21,7 @@ ExternalProject_add(
     ${name}
     URL ${url}
     PREFIX ${name}
-    #PATCH_COMMAND cd ../${name} && patch -p1 < $ENV{REZ_BUILD_SOURCE_PATH}/ocio.patch
+    PATCH_COMMAND cd ../${name} && patch -p1 < $ENV{REZ_BUILD_SOURCE_PATH}/ocio.patch
     CONFIGURE_COMMAND cmake
         -DCMAKE_INSTALL_PREFIX=$ENV{REZ_BUILD_INSTALL_PATH}
         -DPython_EXECUTABLE=$ENV{REZ_PYTHON_ROOT}/bin/python
@@ -30,7 +30,9 @@ ExternalProject_add(
         -Dyaml-cpp_ROOT=$ENV{REZ_YAMLCPP_ROOT}
         -Dpystring_ROOT=$ENV{REZ_PYSTRING_ROOT}
         -DHalf_ROOT=$ENV{REZ_OPENEXR_ROOT}
-        -Dminizip-ng_DIR=${REZ_MINIZIP_ROOT}
+        -DOpenEXR_ROOT=$ENV{REZ_OPENEXR_ROOT}
+        -Dminizip-ng_ROOT=$ENV{REZ_MINIZIP_ROOT}
+        -Dminizip-ng_DIR=$ENV{REZ_MINIZIP_ROOT}/lib/cmake/minizip
         -DPYBIND11_TEST=OFF
         -DBUILD_TESTING=OFF
         -DOCIO_BUILD_APPS=OFF

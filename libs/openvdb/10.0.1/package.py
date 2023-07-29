@@ -1,17 +1,19 @@
 import platform
 
-name = "ocio"
+name = "openvdb"
 
-version = "2.2.0"
+version = "10.0.1"
 
 authors = [
-    "Sony Pictures Imageworks team"
+    "DreamWorks Animation"
 ]
 
 description = \
     """
-    A complete color management solution geared towards motion picture
-    production with an emphasis on visual effects and computer animation.
+    OpenVDB is an open source software library for working with
+    sparse volumetric data. It provides a hierarchical data
+    structure and related functions to help with calculating
+    volumetric effects in CGI applications.
     """
 
 build_requires = [
@@ -19,14 +21,11 @@ build_requires = [
 ]
 
 requires = [
-    "imath-3.1",
+    "boost-1.80",
+    "tbb-2020.3",
     "openexr-3.1",
-    "expat-2.5",
-    "yamlcpp-0.7",
-    "minizip-3",
-    "pystring-1.1.3",
-    "pybind11-2.10",
-    "python-3.10",
+    "png-1.6.37",
+    "zlib-1.2.11",
 ]
 
 variants = []
@@ -36,13 +35,12 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-uuid = "libs.ocio"
+uuid = "libs.opensubdiv"
 
 
 def commands():
     env.LD_LIBRARY_PATH.append("{root}/lib")
     env.CMAKE_PREFIX_PATH.append("{root}")
-    env.OCIO_ROOT.append("{root}")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

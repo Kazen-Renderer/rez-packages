@@ -7,15 +7,16 @@ include(ExternalProject)
 
 set(version $ENV{REZ_BUILD_PROJECT_VERSION})
 set(name $ENV{REZ_BUILD_PROJECT_NAME})
-set(url https://gitlab.com/libtiff/libtiff/-/archive/v4.3.0/libtiff-v4.3.0.tar.gz)
+set(url https://github.com/g-truc/glm/archive/refs/tags/0.9.9.8.tar.gz)
 set(make_args -j$ENV{REZ_BUILD_THREAD_COUNT} VERBOSE=1)
 
-
 if(${REZ_BUILD_INSTALL})
-    set(install_cmd make install ${make_args})
+    set(install_cmd cd ../${name} &&
+        ${CMAKE_COMMAND} -E copy_directory glm $ENV{REZ_BUILD_INSTALL_PATH}/include/glm)
 else()
     set(install_cmd echo "skip install step")
 endif()
+
 
 ExternalProject_add(
     ${name}
@@ -23,12 +24,20 @@ ExternalProject_add(
     PREFIX ${name}
     CONFIGURE_COMMAND cmake
         -DCMAKE_INSTALL_PREFIX=$ENV{REZ_BUILD_INSTALL_PATH}
-        -DCMAKE_POLICY_DEFAULT_CMP0074=NEW
-        -DZLIB_ROOT=$ENV{REZ_ZLIB_ROOT}
-        -DJPEG_ROOT=$ENV{REZ_JPEG_ROOT}
+        -DCMAKE_BUILD_TYPE=Release
+        -DGLM_TEST_ENABLE_FAST_MATH=ON
+        -DGLM_TEST_EANBLE_SIMD_AVX=ON
+        -DGLM_TEST_ENABLE_SIMD_SSE2=ON
+        -DGLM_TEST_ENABLE_SIMD_SSE3=ON
+        -DGLM_TEST_ENABLE_SIMD_SSE4_1=ON
+        -DGLM_TEST_ENABLE_SIMD_SSE4_2=ON
+        -DGLM_TEST_ENABLE_SIMD_SSSE3=ON
         ../${name}
     BUILD_COMMAND make ${make_args}
     INSTALL_COMMAND ${install_cmd}
 )
 
 install(CODE "message(STATUS Dummy Install Target)")
+
+
+

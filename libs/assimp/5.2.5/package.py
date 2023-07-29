@@ -1,25 +1,26 @@
 import platform
 
-name = "glfw"
+name = "assimp"
 
-version = "3.3.4"
+version = "5.2.5"
 
 authors = [
-    "Copyright © 2002-2006 Marcus Geelnard",
-    "Copyright © 2006-2019 Camilla Löwy"
+    "Kim Kulling and etc..."
 ]
 
 description = \
     """
-    GLFW is an Open Source, multi-platform library for OpenGL, 
-    OpenGL ES and Vulkan development on the desktop.
+    A library to import and export various 3d-model-formats including
+    scene-post-processing to generate missing render data.
     """
 
 build_requires = [
     "cmake"
 ]
 
-requires = []
+requires = [
+    "zlib"
+]
 
 variants = []
 
@@ -28,13 +29,12 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-uuid = "libs.glfw"
+uuid = "libs.assimp"
 
 
 def commands():
     env.LD_LIBRARY_PATH.append("{root}/lib")
-    env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/glfw3")
-    env.GLFW_ROOT.append("{root}")
+    env.CMAKE_PREFIX_PATH.append("{root}")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

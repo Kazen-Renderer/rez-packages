@@ -29,6 +29,7 @@ requires = [
     "tiff-4.3.0",
     "gif-5.2",
     "png-1.6.37",
+    #"openvdb-10.0",
     "zlib-1.2.11",
     "fmt-8.0.1",
     "pybind11-2.10"
@@ -49,6 +50,7 @@ def commands():
     env.LD_LIBRARY_PATH.append("{root}/lib")
     env.CMAKE_PREFIX_PATH.append("{root}")
     env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/OpenImageIO")
+    env.OIIO_ROOT.append("{root}")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

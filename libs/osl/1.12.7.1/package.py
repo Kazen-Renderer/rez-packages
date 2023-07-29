@@ -21,7 +21,7 @@ build_requires = [
 ]
 
 requires = [
-    "llvm-15.0",
+    "llvm-13.0",
     "boost-1.80",
     "python-3.10",
     "zlib-1.2.11",

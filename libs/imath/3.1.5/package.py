@@ -1,6 +1,6 @@
 import platform
 
-name = "openexr"
+name = "imath"
 
 version = "3.1.5"
 
@@ -10,9 +10,11 @@ authors = [
 
 description = \
     """
-    OpenEXR provides the specification and reference implementation of
-    the EXR file format, the professional-grade image storage format of
-    the motion picture industry.
+    Imath is a basic, light-weight, and efficient C++ representation of
+    2D and 3D vectors and matrices and other simple but useful
+    mathematical objects, functions, and data types common in computer
+    graphics applications, including the “half” 16-bit floating-point
+    type.
     """
 
 build_requires = [
@@ -20,28 +22,25 @@ build_requires = [
 ]
 
 requires = [
-    "python-3.10",
     "boost-1.80",
-    "zlib-1.2.11"
+    "python-3.10",
 ]
 
 variants = []
 
 if platform.system() == "Darwin":
     variants.append(["platform-osx", "arch-x86_64"])
-    requires.append("gettext-0.21")
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-uuid = "libs.openexr"
+uuid = "libs.oiio"
 
 
 def commands():
+    env.CPATH.append("{root}/include")
     env.LD_LIBRARY_PATH.append("{root}/lib")
-    env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/IlmBase")
-    env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/OpenEXR")
+    env.CMAKE_PREFIX_PATH.append("{root}")
     env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/Imath")
-    env.OPENEXR_ROOT.append("{root}")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

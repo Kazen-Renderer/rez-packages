@@ -1,23 +1,21 @@
 import platform
 
-name = "glfw"
+name = "raw"
 
-version = "3.3.4"
+version = "0.21.1"
 
 authors = [
-    "Copyright © 2002-2006 Marcus Geelnard",
-    "Copyright © 2006-2019 Camilla Löwy"
+    "Iliah Borg",
+    "Alex Tutubalin"
 ]
 
 description = \
     """
-    GLFW is an Open Source, multi-platform library for OpenGL, 
-    OpenGL ES and Vulkan development on the desktop.
+    LibRaw is a free and open-source software library for reading raw
+    files from digital cameras.
     """
 
-build_requires = [
-    "cmake"
-]
+build_requires = []
 
 requires = []
 
@@ -28,13 +26,12 @@ if platform.system() == "Darwin":
 elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
-uuid = "libs.glfw"
+uuid = "libs.raw"
 
 
 def commands():
     env.LD_LIBRARY_PATH.append("{root}/lib")
-    env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/glfw3")
-    env.GLFW_ROOT.append("{root}")
-
+    env.CMAKE_PREFIX_PATH.append("{root}")
+    
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")
