@@ -23,7 +23,7 @@ requires = [
     "openexr-3.1",
     "expat-2.5",
     "yamlcpp-0.7",
-    #"minizip-3",
+    "minizip-3",
     "pystring-1.1.3",
     "pybind11-2.10",
     "python-3.10",

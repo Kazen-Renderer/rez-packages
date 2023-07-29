@@ -1,4 +1,4 @@
-import platform
+import platform, os
 
 name = "minizip"
 
@@ -33,7 +33,9 @@ uuid = "libs.minizip"
 
 
 def commands():
+    env.PATH.append("{root}/lib")
     env.LD_LIBRARY_PATH.append("{root}/lib")
+    env.CMAKE_PREFIX_PATH.append("{root}/lib/cmake/minizip")
 
     if building:
         env.PKG_CONFIG_PATH.append("{root}/lib/pkgconfig")

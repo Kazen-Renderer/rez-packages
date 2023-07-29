@@ -14,9 +14,7 @@ description = \
     containers, fixed-size containers, and various algorithms.
     """
 
-build_requires = [
-    "cmake"
-]
+build_requires = []
 
 requires = []
 

@@ -31,7 +31,8 @@ ExternalProject_add(
         -Dpystring_ROOT=$ENV{REZ_PYSTRING_ROOT}
         -DHalf_ROOT=$ENV{REZ_OPENEXR_ROOT}
         -DOpenEXR_ROOT=$ENV{REZ_OPENEXR_ROOT}
-        -Dminizip-ng_DIR=${REZ_MINIZIP_ROOT}
+        -Dminizip-ng_ROOT=$ENV{REZ_MINIZIP_ROOT}
+        -Dminizip-ng_DIR=$ENV{REZ_MINIZIP_ROOT}/lib/cmake/minizip
         -DPYBIND11_TEST=OFF
         -DBUILD_TESTING=OFF
         -DOCIO_BUILD_APPS=OFF

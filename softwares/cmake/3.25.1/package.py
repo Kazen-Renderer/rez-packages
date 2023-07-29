@@ -19,7 +19,9 @@ description = \
     a compiler-independent method.
     """
 
-build_requires = []
+build_requires = [
+    "gcc-12"
+]
 
 requires = [
     "openssl-1.1.1"
@@ -33,6 +35,8 @@ elif platform.system() == "Linux":
     variants.append(["platform-linux", "arch-x86_64"])
 
 uuid = "softwares.cmake"
+
+build_command = 'python {root}/build.py {install}'
 
 
 def commands():
